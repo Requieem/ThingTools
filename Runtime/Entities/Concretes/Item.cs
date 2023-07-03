@@ -35,7 +35,7 @@ public class Item : Entity<Item, ItemBuilder>
     public UnityEvent OnLose { get { return onLose; } private set { onLose = value; } }
     public UnityEvent OnUse { get { return onUse; } private set { onUse = value; } }
     public Sprite Icon { get { return Displayable?.Sprite; } }
-    public override List<ISerializableThing> SerializableObjects { get { return  new List<ISerializableThing>(base.SerializableObjects) { m_ItemLevel, m_CurrentUsage }; } set { } }
+    public override List<ISerializableThing> SerializableObjects { get { return new List<ISerializableThing>(base.SerializableObjects) { m_ItemLevel, m_CurrentUsage }; } set { } }
 
     public override Tuple<ISerializableThing[], int> GetSerializedProperties()
     {
@@ -48,7 +48,8 @@ public class Item : Entity<Item, ItemBuilder>
         return new Tuple<ISerializableThing[], int>(arr, index);
     }
 
-    public Item() : base() {
+    public Item() : base()
+    {
         m_Value = 0;
         m_Statistics = null;
         m_ItemLevel = null;
@@ -56,7 +57,7 @@ public class Item : Entity<Item, ItemBuilder>
         m_CurrentUsage = null;
         m_Usages = new SlotType[0];
     }
-    public Item(ItemBuilder builder) : base (builder)
+    public Item(ItemBuilder builder) : base(builder)
     {
         m_ItemLevel = builder.ItemLevel;
         m_Usages = builder.Usages;

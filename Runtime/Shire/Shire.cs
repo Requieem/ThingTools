@@ -35,7 +35,7 @@ public abstract class Shire<T> : ScriptableThing<T>, IShire where T : Shire<T>
     {
         var orderCriteria = new Func<T, string>(x => OrderCriteria(x));
         m_Lister = new Lister<T>(orderCriteria);
-        
+
         base.Enable();
 
     }

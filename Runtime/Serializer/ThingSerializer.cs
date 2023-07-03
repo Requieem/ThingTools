@@ -29,7 +29,7 @@ public class ThingSerializer
                 serializable.OnDuplicate();
                 id = serializable.Identifier;
             }
-            
+
             m_Map.Add(id.Id, serializable);
             return true;
         }
@@ -43,7 +43,7 @@ public class ThingSerializer
         var keyPresent = m_Map.ContainsKey(id.Id);
         var keyEquals = keyPresent && m_Map[id.Id].Equals(serializable);
 
-        if(keyPresent && keyEquals)
+        if (keyPresent && keyEquals)
         {
             m_Map.Remove(id.Id);
         }

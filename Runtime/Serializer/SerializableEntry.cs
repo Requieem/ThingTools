@@ -2,11 +2,11 @@
 using UnityEngine;
 
 [Serializable]
-public class SerializeableEntry<K, V> : ThingEntry<K,V>, ISerializationCallbackReceiver where K : ScriptableThing<K>
+public class SerializeableEntry<K, V> : ThingEntry<K, V>, ISerializationCallbackReceiver where K : ScriptableThing<K>
 {
     [SerializeField] private ThingID identifier = null;
 
-    public SerializeableEntry(K key, V value) : base (key, value)
+    public SerializeableEntry(K key, V value) : base(key, value)
     {
         this.identifier = key.Identifier;
     }

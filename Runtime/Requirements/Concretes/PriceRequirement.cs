@@ -1,7 +1,8 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PriceRequirement", menuName = "ShireSoft/Requirements/PriceRequirement", order = 0)]
-public class PriceRequirement : Requirement {
+public class PriceRequirement : Requirement
+{
 
     #region Instance Fields:
     [SerializeField] protected Numismatic wallet;
@@ -23,14 +24,17 @@ public class PriceRequirement : Requirement {
     #endregion
 
     #region Instance Methods:
-    
+
     public override void Enable()
     {
         base.Enable();
         if (targetPrice != null)
-            if (wallet?.Watch(targetPrice, m_DoSatisfy, m_UnSatisfy) == 1) {
+            if (wallet?.Watch(targetPrice, m_DoSatisfy, m_UnSatisfy) == 1)
+            {
                 Satisfy();
-            } else {
+            }
+            else
+            {
                 Unsatisfy();
             }
     }

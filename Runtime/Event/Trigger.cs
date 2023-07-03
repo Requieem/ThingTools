@@ -9,7 +9,7 @@ public abstract class Trigger<T> : ScriptableObject where T : UnityEventBase
     #region Instance Fields:
 
     [SerializeField] protected T m_Event;
-    
+
     #endregion
 
     #region Instance Properties:

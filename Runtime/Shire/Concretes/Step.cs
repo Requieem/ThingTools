@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 [Serializable]
 public class Step<T> : Shire<T> where T : Step<T>
@@ -73,7 +72,7 @@ public class Step<T> : Shire<T> where T : Step<T>
 
     public float ComputeExpForNext()
     {
-/*        m_ExpToThisLevel = m_PreviousLevel?.ComputeExpForNext() ?? 0;*/
+        /*        m_ExpToThisLevel = m_PreviousLevel?.ComputeExpForNext() ?? 0;*/
         return m_ExpToNextLevel + m_ExpToThisLevel;
     }
 

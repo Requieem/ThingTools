@@ -1,11 +1,11 @@
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// An abstract base class for all Containers that exist in the game.
 /// </summary>
 [Serializable]
-public class Statistics : ThingsContainer<StatName,ShireBlock>
+public class Statistics : ThingsContainer<StatName, ShireBlock>
 {
     /// declare a custom function that takes a stat and a value and returns a float
     public delegate float StatFunc(StatName stat, float value);
@@ -20,7 +20,7 @@ public class Statistics : ThingsContainer<StatName,ShireBlock>
     {
         this.m_Entries = new();
 
-        for(int i = 0; i < objects.Count; i++)
+        for (int i = 0; i < objects.Count; i++)
         {
             Add(objects[i].m_Key, objects[i].m_Value);
         }
@@ -57,7 +57,8 @@ public class Statistics : ThingsContainer<StatName,ShireBlock>
 
     public virtual float ChangeStat(StatName stat, float value)
     {
-        return ApplyStatChange(stat, value, (StatName stat, float value) => {
+        return ApplyStatChange(stat, value, (StatName stat, float value) =>
+        {
             Dictionary[stat].Value += value;
             return Dictionary[stat].Value;
         });
@@ -65,7 +66,8 @@ public class Statistics : ThingsContainer<StatName,ShireBlock>
 
     public virtual float AffectStat(StatName stat, float value)
     {
-        return ApplyStatChange(stat, value, (StatName stat, float value) => {
+        return ApplyStatChange(stat, value, (StatName stat, float value) =>
+        {
             Dictionary[stat].Temp += value;
             return Dictionary[stat].Temp;
         });
@@ -73,7 +75,8 @@ public class Statistics : ThingsContainer<StatName,ShireBlock>
 
     public virtual float ModStat(StatName stat, float value)
     {
-        return ApplyStatChange(stat, value, (StatName stat, float value) => {
+        return ApplyStatChange(stat, value, (StatName stat, float value) =>
+        {
             Dictionary[stat].Mod += (int)value;
             return Dictionary[stat].Mod;
         });
@@ -81,13 +84,14 @@ public class Statistics : ThingsContainer<StatName,ShireBlock>
 
     public virtual float ModTempStat(StatName stat, float value)
     {
-        return ApplyStatChange(stat, value, (StatName stat, float value) => {
+        return ApplyStatChange(stat, value, (StatName stat, float value) =>
+        {
             Dictionary[stat].ModTemp += value;
             return Dictionary[stat].ModTemp;
         });
     }
 
-    public virtual void AppendBlock(Statistics other, bool withMods=false, bool addNew=false)
+    public virtual void AppendBlock(Statistics other, bool withMods = false, bool addNew = false)
     {
         foreach (var stat in other.Dictionary.Keys)
         {
@@ -95,20 +99,20 @@ public class Statistics : ThingsContainer<StatName,ShireBlock>
             {
                 ChangeStat(stat, other.Dictionary[stat].Value);
                 AffectStat(stat, other.Dictionary[stat].Temp);
-                if(withMods)
+                if (withMods)
                 {
                     ModStat(stat, other.Dictionary[stat].Mod);
                     ModTempStat(stat, other.Dictionary[stat].ModTemp);
                 }
             }
-            else if(addNew)
+            else if (addNew)
             {
                 Add(stat, other.Dictionary[stat]);
             }
         }
     }
 
-    public virtual void RemoveBlock(Statistics other, bool withMods=false)
+    public virtual void RemoveBlock(Statistics other, bool withMods = false)
     {
         foreach (var stat in other.Dictionary.Keys)
         {
@@ -116,7 +120,7 @@ public class Statistics : ThingsContainer<StatName,ShireBlock>
             {
                 ChangeStat(stat, -other.Dictionary[stat].Value);
                 AffectStat(stat, -other.Dictionary[stat].Temp);
-                if(withMods)
+                if (withMods)
                 {
                     ModStat(stat, -other.Dictionary[stat].Mod);
                     ModTempStat(stat, -other.Dictionary[stat].ModTemp);

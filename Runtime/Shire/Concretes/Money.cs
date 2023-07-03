@@ -42,7 +42,7 @@ public class Money : Shire<Money>
     /// <param name="rate">The rate of this piece of Money.</param>
     public virtual void Initialize(float rate)
     {
-        base.Initialize(new ());
+        base.Initialize(new());
         this.rate = rate;
     }
 

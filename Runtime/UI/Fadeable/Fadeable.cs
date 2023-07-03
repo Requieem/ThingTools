@@ -26,7 +26,7 @@ public class Fadeable : MonoBehaviour, IFadeable
     public void Awake()
     {
         Initialize(transform);
-        if(fadeOnAwake && Application.isPlaying)
+        if (fadeOnAwake && Application.isPlaying)
         {
             Fade();
         }
@@ -50,7 +50,7 @@ public class Fadeable : MonoBehaviour, IFadeable
 
         reset = new Coroutine[FadeCount];
 
-        for(int i = 0; i < FadeCount; i++)
+        for (int i = 0; i < FadeCount; i++)
         {
             reset[i] = StartCoroutine(fadeable.ResetFade(fadeable.Graphics[i], i));
         }
@@ -84,7 +84,7 @@ public class Fadeable : MonoBehaviour, IFadeable
         {
             foreach (var r in reset)
             {
-                if(r != null)
+                if (r != null)
                 {
                     StopCoroutine(r);
                 }

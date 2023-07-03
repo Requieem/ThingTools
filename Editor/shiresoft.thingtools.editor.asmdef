@@ -1,10 +1,12 @@
 {
-    "name": "ThingTools.Runtime",
-    "rootNamespace": "",
+    "name": "shiresoft.thingtools.editor",
+    "rootNamespace": "ThingTools",
     "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+        "GUID:267679bc8b859a2498e240d9e6931d9f"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

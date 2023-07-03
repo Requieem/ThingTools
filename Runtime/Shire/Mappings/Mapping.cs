@@ -20,8 +20,9 @@ public class Mapping<K, V> : Shire<Mapping<K, V>>
 
     public List<K> Keys { get { return keys; } set { keys = value; } }
     public List<ListWrapper> Values { get { return values; } set { values = value; } }
-    public Dictionary<K, List<V>> Map { 
-        get 
+    public Dictionary<K, List<V>> Map
+    {
+        get
         {
             var dict = new Dictionary<K, List<V>>();
             for (int i = 0; i < keys.Count; i++)
@@ -29,6 +30,6 @@ public class Mapping<K, V> : Shire<Mapping<K, V>>
                 dict.Add(keys[i], values[i].List);
             }
             return dict;
-        } 
+        }
     }
 }

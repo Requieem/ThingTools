@@ -1,4 +1,3 @@
-using Codice.CM.Common;
 using System;
 using UnityEngine;
 
@@ -56,7 +55,7 @@ public class ShireBlock : IComparable<ShireBlock>, ISerializationCallbackReceive
         m_ModTemp = 1;
     }
 
-    public ShireBlock(float value=0, float temp = 0, int mod = 1, float modTemp = 1)
+    public ShireBlock(float value = 0, float temp = 0, int mod = 1, float modTemp = 1)
     {
         m_Value = value;
         m_Temp = temp;

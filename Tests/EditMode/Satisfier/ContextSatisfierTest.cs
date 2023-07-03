@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using UnityEngine;
 using UnityEngine.Events;
 
 public class ContextSatisfierTest : SatisfierTest
@@ -73,7 +72,7 @@ public class ContextSatisfierTest : SatisfierTest
         var bundle = satisfier.Bundles[m_Obj];
 
         Assert.IsTrue(bundle.ContainsKey(m_Obj));
-            
+
         AssertBundle(m_Obj, 0, 0, satEvent, unsatEvent, bundle[m_Obj]);
     }
 

@@ -40,7 +40,7 @@ public class DataTrigger<T> : Trigger<UnityEvent<T>>
 
     public override void AddListener(UnityAction listener)
     {
-        if(Event != null)
+        if (Event != null)
         {
             UnityAction<T> voidListener = (arg) => listener.Invoke();
             VoidListeners.Add(listener, voidListener);

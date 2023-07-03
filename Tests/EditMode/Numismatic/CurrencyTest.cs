@@ -56,7 +56,7 @@ public class CurrencyTest
     }
 
     [Test, Order(5)]
-    public void AddMoney_SortedOnNew() 
+    public void AddMoney_SortedOnNew()
     {
         var x_count = currency.MoneyCount + 1;
 

@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using UnityEngine;
 
 /// <summary>
@@ -12,7 +11,7 @@ public class Displayable
 
     [SerializeField] Color color = Color.white;
     [SerializeField] Sprite sprite;
-    [SerializeField] [TextAreaAttribute] string description;
+    [SerializeField][TextAreaAttribute] string description;
 
     #endregion
 

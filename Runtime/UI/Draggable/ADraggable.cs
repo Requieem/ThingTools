@@ -28,7 +28,7 @@ public class ADraggable
         CheckPrevent(() => DoInitialize(_transform, changeRegistration));
     }
 
-    public void DoInitialize(Transform _transform, bool changeRegistration=true)
+    public void DoInitialize(Transform _transform, bool changeRegistration = true)
     {
         if (!_transform.TryGetComponent(out target))
         {
@@ -202,13 +202,13 @@ public class ADraggable
 
     public void CheckPrevent(System.Action func)
     {
-        if(IDraggable.Prevent) return;
+        if (IDraggable.Prevent) return;
         else func();
     }
 
     public void ClosingAdjustments()
     {
-        if(!IDraggable.IsDragging) return;
+        if (!IDraggable.IsDragging) return;
 
         IDraggable.ChangeOrigin();
 

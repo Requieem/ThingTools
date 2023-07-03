@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
@@ -29,7 +27,7 @@ public class ObjectSatisfier<T> : Satisfier<T>
     #endregion
 
     #region Instance Properties:
-    
+
     public Dictionary<T, SatisfierBundle> Bundles
     {
         get { return m_Bundles; }

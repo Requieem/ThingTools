@@ -1,12 +1,12 @@
-﻿using UnityEngine;
-using UnityEditor;
-using UnityEngine.UIElements;
-using System;
-using System.Linq;
+﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
-using UnityEditor.UIElements;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using UnityEditor;
+using UnityEditor.UIElements;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ScriptableObjectCreationWindow : EditorWindow
 {
@@ -207,10 +207,10 @@ public class ScriptableObjectCreationWindow : EditorWindow
     {
         if (depth < 0) return null;
         if (depth == m_Depth[type]) return type;
-        else if(depth < m_Depth[type])
+        else if (depth < m_Depth[type])
         {
             int currentDepth = m_Depth[type];
-            for(Type _type = type; m_Hierarchy.ContainsKey(_type) && currentDepth >= 0; _type = m_Parents[_type])
+            for (Type _type = type; m_Hierarchy.ContainsKey(_type) && currentDepth >= 0; _type = m_Parents[_type])
             {
                 currentDepth = m_Depth[_type];
                 if (currentDepth == depth) return _type;
@@ -335,7 +335,7 @@ public class ScriptableObjectCreationWindow : EditorWindow
             var hasSelectedType = m_SelectedType != null;
             var hasTemplateObject = m_TemplateAsset != null && m_TemplateAsset is not null;
 
-            if(!(hasSelectedType || hasTemplateObject))
+            if (!(hasSelectedType || hasTemplateObject))
             {
                 ShowHelpBox(true, TYPE_ERROR_MESSAGE);
                 createButton.SetEnabled(false);
@@ -590,7 +590,7 @@ public class ScriptableObjectCreationWindow : EditorWindow
                     selectedHeaderButtonContainer = buttonContainer;
                 };
 
-            if(m_SelectedHeader == headerType)
+            if (m_SelectedHeader == headerType)
             {
                 buttonContainer.AddToClassList("selected-header-button-container");
                 RefreshDropdown();
@@ -663,7 +663,7 @@ public class ScriptableObjectCreationWindow : EditorWindow
             scrollView.Add(value);
         }
 
-        if(m_SelectedType != null && ContentTypes.Contains(m_SelectedType))
+        if (m_SelectedType != null && ContentTypes.Contains(m_SelectedType))
         {
             var buttonContainer = m_Buttons[m_SelectedType];
             buttonContainer.AddToClassList("selected-list-button");
@@ -751,7 +751,7 @@ public class ScriptableObjectCreationWindow : EditorWindow
 
         button.text = TypeToName(type);
 
-        if(!m_Buttons.ContainsKey(type))
+        if (!m_Buttons.ContainsKey(type))
         {
             m_Buttons.Add(type, buttonContainer);
         }

@@ -3,4 +3,4 @@ using UnityEngine;
 
 [Serializable]
 [CreateAssetMenu(fileName = "ActionLevel", menuName = "ShireSoft/Context/Contexts/ActionLevel")]
-public class ActionLevel : Step<ActionLevel> {}
+public class ActionLevel : Step<ActionLevel> { }

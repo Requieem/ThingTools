@@ -52,18 +52,18 @@ public class Displaceable : MonoBehaviour, IDisplaceable
 
     public void Initialize(Transform _transform)
     {
-        DisplaceBehaviour.Initialize(transform);    
+        DisplaceBehaviour.Initialize(transform);
     }
 
     void StopDisplacement()
     {
-        if(displace != null)
+        if (displace != null)
         {
             StopCoroutine(displace);
             displace = null;
         }
 
-        if(reset != null)
+        if (reset != null)
         {
             StopCoroutine(reset);
             reset = null;

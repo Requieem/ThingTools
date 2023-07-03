@@ -1,4 +1,4 @@
 ﻿using System;
 
 [Serializable]
-public class ActionResponseBehaviour : DefaultBehaviour<ActionResponseBehaviour, ActionBehaviour> {}
+public class ActionResponseBehaviour : DefaultBehaviour<ActionResponseBehaviour, ActionBehaviour> { }

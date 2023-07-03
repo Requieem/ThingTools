@@ -80,10 +80,10 @@ public interface IDraggable : IInitializable
 
     public static void ChangeOrigin()
     {
-        if(!IsDragging) return;
+        if (!IsDragging) return;
         DraggableOrigin newOrigin;
 
-        if(HasTarget && lazySwap)
+        if (HasTarget && lazySwap)
             newOrigin = new DraggableOrigin(Target);
         else
             newOrigin = new DraggableOrigin(Placeholder);
@@ -100,7 +100,7 @@ public interface IDraggable : IInitializable
     public static void InstantiatePlaceHolder(DraggableOrigin origin)
     {
         if (!IsDragging) return;
-        if(!HasPlaceholder)
+        if (!HasPlaceholder)
         {
             placeHolder = new GameObject("PlaceHolder", typeof(RectTransform), typeof(Draggable), typeof(BoxCollider2D)).GetComponent<IDraggable>();
         }

@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
@@ -113,7 +112,7 @@ public class InventoryTest
     public void WatchFeedback_NOnMultiples()
     {
         var i = 0;
-        for(i = 0; i < Random.Range(1f, 100f); i++)
+        for (i = 0; i < Random.Range(1f, 100f); i++)
             firstInventory.Add(secondObject);
 
         var res = firstInventory.Watch(secondObject, null, null);

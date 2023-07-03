@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-public interface IDisplaceable : IInitializable
+﻿public interface IDisplaceable : IInitializable
 {
     public void ShowDisplacement();
     public void Displace();

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 [Serializable]
 public class Lister<D> where D : ScriptableObject, ILister<D>
@@ -20,7 +19,7 @@ public class Lister<D> where D : ScriptableObject, ILister<D>
 
     public Lister(Func<D, string> orderCriteria = null)
     {
-        if(orderCriteria != null)
+        if (orderCriteria != null)
             m_OrderCriteria = orderCriteria;
         else
             m_OrderCriteria = DefaultCriteria;
@@ -29,7 +28,7 @@ public class Lister<D> where D : ScriptableObject, ILister<D>
     public void Sync()
     {
         OrderListables();
-        
+
         siblings.Clear();
 
         foreach (D item in m_Elements)
@@ -60,10 +59,10 @@ public class Lister<D> where D : ScriptableObject, ILister<D>
 
     public void ToggleListable(D item, bool toggle)
     {
-        if(toggle)
+        if (toggle)
         {
             AddListable(item);
-        }    
+        }
         else
         {
             RemoveListable(item);
@@ -72,7 +71,7 @@ public class Lister<D> where D : ScriptableObject, ILister<D>
 
     public bool ToggleListable(D item)
     {
-        if(m_Elements.Contains(item))
+        if (m_Elements.Contains(item))
         {
             RemoveListable(item);
             return false;

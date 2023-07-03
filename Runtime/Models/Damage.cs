@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-public class Damage : ThingsContainer<DamageType,ShireBlock>
+public class Damage : ThingsContainer<DamageType, ShireBlock>
 {
     /// declare a custom function that takes a stat and a value and returns a float
     public delegate float StatFunc(DamageType stat, float value);

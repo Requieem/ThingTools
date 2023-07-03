@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public class Character : Entity<Character, CharacterBuilder>
@@ -48,7 +48,7 @@ public class Character : Entity<Character, CharacterBuilder>
         }
     }
 
-    public Character() : base() 
+    public Character() : base()
     {
         m_Exp = 0;
         m_Level = null;
@@ -66,12 +66,12 @@ public class Character : Entity<Character, CharacterBuilder>
 
     public Character(CharacterBuilder builder, string chosenName = null, Class chosenClass = null) : base(builder)
     {
-        if(chosenName != null)
+        if (chosenName != null)
         {
             m_Name = chosenName;
         }
 
-        if(chosenClass != null)
+        if (chosenClass != null)
         {
             m_Class = chosenClass;
         }
@@ -79,7 +79,7 @@ public class Character : Entity<Character, CharacterBuilder>
         {
             m_Class = builder.Class;
         }
-        
+
 
         m_Exp = builder.StartingExp;
         m_Faction = builder.Faction;
@@ -92,8 +92,8 @@ public class Character : Entity<Character, CharacterBuilder>
         m_Activator = builder.Activator;
         m_Interactor = builder.Interactor;
         m_Actioneer = builder.Actioneer;
-        
-        if(m_Class != null)
+
+        if (m_Class != null)
             Statistics.AppendBlock(m_Class.Statistics);
 
         while (!m_Level.IsMaxLevel && m_Exp >= m_Level.m_ExpToNextLevel)

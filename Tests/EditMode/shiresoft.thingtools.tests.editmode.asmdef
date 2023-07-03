@@ -1,10 +1,11 @@
 {
-    "name": "ThingTools.Tests.EditMode",
-    "rootNamespace": "",
+    "name": "shiresoft.thingtools.tests.editmode",
+    "rootNamespace": "ThingTools",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "ThingTools.Runtime"
+        "shiresoft.thingtools.runtime",
+        "shiresoft.thingtools.editor"
     ],
     "includePlatforms": [
         "Editor"

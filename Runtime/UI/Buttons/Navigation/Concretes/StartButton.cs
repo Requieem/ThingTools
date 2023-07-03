@@ -14,7 +14,7 @@ public class StartButton : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI errorViewer;
 
-    string ErrorMessage { get { return "New Game ERROR: ";  } }
+    string ErrorMessage { get { return "New Game ERROR: "; } }
 
     bool error = false;
     string chosenName = null;
@@ -54,7 +54,7 @@ public class StartButton : MonoBehaviour
         var character = new Character(characterBuilder, chosenName, chosenClass);
         var saveFile = new SaveFile(character, chosenDifficulty);
 
-        if(onCreateCharacter != null)
+        if (onCreateCharacter != null)
         {
             onCreateCharacter.Invoke(saveFile);
         }
@@ -62,7 +62,7 @@ public class StartButton : MonoBehaviour
 
     private void SetError(string errorMessage)
     {
-        if(errorViewer != null)
+        if (errorViewer != null)
         {
             errorViewer.text = ErrorMessage + errorMessage;
             errorViewer.color = Color.red;

@@ -95,7 +95,7 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
 
         this.remainder = remainder ?? 0f;
 
-        if(MoneyCount != quantities?.Count)
+        if (MoneyCount != quantities?.Count)
         {
             /* 
              throw new ArgumentException("The Currency Money Count must be equal to the Count of Quantities"); 
@@ -105,7 +105,7 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
             var actualQuantities = new List<int>(MoneyCount);
             for (int i = 0; i < actualQuantities.Count; i++)
             {
-                if(quantities != null && i < quantities.Count)
+                if (quantities != null && i < quantities.Count)
                 {
                     actualQuantities[i] = quantities[i];
                 }
@@ -134,7 +134,7 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
     {
         get
         {
-            if(quantities == null || quantities.Count == 0)
+            if (quantities == null || quantities.Count == 0)
             {
                 var tuple = Convert(0);
                 quantities = tuple.Item1;
@@ -150,7 +150,8 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
             }
             return (value + remainder) * FixedRate;
         }
-        set {
+        set
+        {
             var tuple = Convert(value);
             quantities = tuple.Item1;
             remainder = tuple.Item2;
@@ -291,7 +292,7 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
             {
                 // satisfy the current satisfier bundle
                 bundles.Current.Unsatisfy();
-                res= true;
+                res = true;
             }
             // else if the current satisfier bundle can be satisfied
             else

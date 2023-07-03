@@ -1,10 +1,6 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Playables;
 
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
 
 public abstract class EntityBuilder<D, T> : ABuilder<D, T> where D : EntityBuilder<D, T>
@@ -24,8 +20,8 @@ public abstract class EntityBuilder<D, T> : ABuilder<D, T> where D : EntityBuild
     public Level Level { get { return m_Level; } set { m_Level = value; } }
     public Class Class { get { return m_Class; } set { m_Class = value; } }
     public Faction Faction { get { return m_Faction; } set { m_Faction = value; } }
-    public Vitality Vitality { get { return m_Vitality is not null ? m_Vitality.GetCopy() : null; }}
-    public Statistics Statistics { get { return m_Statistics is not null ? m_Statistics.GetCopy() : null; }}
+    public Vitality Vitality { get { return m_Vitality is not null ? m_Vitality.GetCopy() : null; } }
+    public Statistics Statistics { get { return m_Statistics is not null ? m_Statistics.GetCopy() : null; } }
 
     #endregion
 }

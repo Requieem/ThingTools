@@ -48,7 +48,7 @@ public class DisplayableDrawer : PropertyDrawer
 
         spriteField.RegisterValueChangedCallback(value =>
         {
-            if(value.newValue != null)
+            if (value.newValue != null)
             {
                 spriteImage.style.backgroundImage = new StyleBackground(value.newValue as Sprite);
                 spriteContainer.RemoveFromClassList("hidden");

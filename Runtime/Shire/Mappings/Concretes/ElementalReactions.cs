@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "ElementalReactions", menuName = "ShireSoft/Context/Maps/ElementalReactions")]
-public class ElementalReactions : Mapping<Mapping<Element, Element>.ListWrapper, Element> { } 
+public class ElementalReactions : Mapping<Mapping<Element, Element>.ListWrapper, Element> { }

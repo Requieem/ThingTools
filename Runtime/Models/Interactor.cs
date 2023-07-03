@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
-using UnityEngine;
 
 /// <summary>
 /// A base class for all Objects that exist in the game.
 /// </summary>
 [Serializable]
-public class Interactor : ThingsContainer<InteractionKey,InteractionBehaviour>
+public class Interactor : ThingsContainer<InteractionKey, InteractionBehaviour>
 {
     public override Comparison<InteractionBehaviour> Comparer { get { return (a, b) => a.ToString().CompareTo(b.ToString()); } }
 

@@ -1,8 +1,6 @@
 using UnityEngine;
-using UnityEngine.Playables;
 
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
 
 public interface IScriptableThing : IDisplayable, ISerializableThing { }
@@ -58,10 +56,10 @@ public abstract class ScriptableThing<D> : ScriptableObject, IScriptableThing, I
         ThingSerializer.Register(this as D);
         ListerSerialization();
 
-/*#if UNITY_EDITOR
-        EditorUtility.SetDirty(this);
-#endif*/
-        
+        /*#if UNITY_EDITOR
+                EditorUtility.SetDirty(this);
+        #endif*/
+
     }
 
     public void Initialize(Displayable displayable)

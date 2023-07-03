@@ -9,7 +9,7 @@ public abstract class ABuilder<D, T> : ScriptableThing<D>, IBuilder, IBuilder<T>
     public T Built { get { return m_Built; } }
 
     public abstract T GetCopy();
-    public V GetSafeCopy<V,K>(K builder) where K : ABuilder<K, V>
+    public V GetSafeCopy<V, K>(K builder) where K : ABuilder<K, V>
     {
         if (builder is not null)
         {
@@ -19,7 +19,7 @@ public abstract class ABuilder<D, T> : ScriptableThing<D>, IBuilder, IBuilder<T>
     }
     public virtual T GetInstance()
     {
-        if(m_Built == null)
+        if (m_Built == null)
         {
             m_Built = GetCopy();
         }

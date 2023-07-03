@@ -29,7 +29,7 @@ public class ItemBuilderEditor : EntityBuilderEditor
         var usagesField = ObjectPicker.Field(usagesProp);
         var activatableField = ObjectPicker.Field(activatableProp);
         var onAcquireField = ObjectPicker.Field(onAcquireProp, "OnAcquire");
-        var onLoseField = ObjectPicker.Field(onLoseProp,"OnLose");
+        var onLoseField = ObjectPicker.Field(onLoseProp, "OnLose");
         var onUseField = ObjectPicker.Field(onUseProp, "OnUse");
 
         // bind the fields

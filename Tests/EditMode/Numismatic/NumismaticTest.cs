@@ -175,7 +175,7 @@ public class NumismaticTest
         var res1 = secondNumismatic.Watch(firstNumismatic, null, unsatEvent);
         var res2 = secondNumismatic.Watch(newNumismatic, null, unsatEvent);
 
-        secondNumismatic.Value = firstNumismatic.Value -1;
+        secondNumismatic.Value = firstNumismatic.Value - 1;
 
         secondNumismatic.CheckUnsatisfyOnChange(secondNumismatic);
 

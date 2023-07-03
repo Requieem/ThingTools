@@ -5,20 +5,17 @@
     "description": "A variety of game-ready tools for Unity. You can leverage these tools to worry less about code and more about the game; Unleash your creativity!",
     "unity": "2022.3",
     "unityRelease": "1f1",
-    "documentationUrl": "https://example.com/",
-    "changelogUrl": "https://example.com/changelog.html",
-    "licensesUrl": "https://choosealicense.com/licenses/mit/",
-    "dependencies": {
-   },
-   "keywords": [
-        "thing",
-        "design",
-        "thingtools",
-        "tools"
-    ],
+    "changelogUrl": "https://github.com/Requieem/ThingTools/blob/main/CHANGELOG.md",
+    "licensesUrl": "https://github.com/Requieem/ThingTools/blob/main/LICENSE",
+    "keywords": [
+            "thing",
+            "design",
+            "thingtools",
+            "tools"
+        ],
     "author": {
-      "name": "Marco Farace - ShireSoft",
-      "email": "farace.marco@outlook.com",
-      "url": "https://www.unity3d.com"
+    "name": "Marco Farace - ShireSoft",
+    "email": "farace.marco@outlook.com",
+    "url": "https://github.com/Requieem/ThingTools.git"
     }
   }

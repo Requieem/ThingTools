@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 public interface ILister<D> : ISerializationCallbackReceiver where D : ScriptableObject, ILister<D>
 {

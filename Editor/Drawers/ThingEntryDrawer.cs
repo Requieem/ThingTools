@@ -1,7 +1,7 @@
 using System;
-using UnityEngine;
 using UnityEditor;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 [CustomPropertyDrawer(typeof(ThingEntry<,>), true)]
@@ -28,7 +28,7 @@ public class ThingEntryDrawer : PropertyDrawer
         keyField.RegisterValueChangeCallback((evt) =>
         {
             var enumNames = keyProp.enumNames;
-            var enumValue = enumNames is not null && enumNames.Length > 0 ? enumNames[keyProp.enumValueIndex] : null; 
+            var enumValue = enumNames is not null && enumNames.Length > 0 ? enumNames[keyProp.enumValueIndex] : null;
             container.text = enumValue is not null ? enumValue : keyProp?.objectReferenceValue?.name ?? "NULL";
             keyField.MarkDirtyRepaint();
         });

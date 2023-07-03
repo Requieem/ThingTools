@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using System;
 
 [Serializable]
 public class AFadeable
@@ -25,7 +25,7 @@ public class AFadeable
         transform = _transform;
         originalAlphas = new List<float>();
 
-        foreach(var graphic in Graphics)
+        foreach (var graphic in Graphics)
         {
             originalAlphas.Add(graphic.color.a);
         }
@@ -33,12 +33,12 @@ public class AFadeable
 
     public void ShowFade()
     {
-        if(fade && !isFaded)
+        if (fade && !isFaded)
         {
             isFaded = true;
             Target.Fade();
         }
-        else if(!fade && isFaded)
+        else if (!fade && isFaded)
         {
             isFaded = false;
             Target.ResetFade();

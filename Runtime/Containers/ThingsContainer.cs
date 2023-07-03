@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public abstract class ThingsContainer<K, V> : TSatisfier<K, V> where K : ScriptableThing<K>
 {
     [Serializable]
-    public class ThingEntry : SerializeableEntry<K, V> 
+    public class ThingEntry : SerializeableEntry<K, V>
     {
         public ThingEntry() : base() { }
         public ThingEntry(K key, V value) : base(key, value) { }
@@ -67,7 +67,7 @@ public abstract class ThingsContainer<K, V> : TSatisfier<K, V> where K : Scripta
 
         Dictionary = null;
         m_Entries ??= new List<ThingEntry>();
-        
+
         foreach (ThingEntry obj in Entries)
         {
             CheckSatisfyOnChange(obj.m_Key, obj.m_Value);

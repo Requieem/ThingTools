@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,7 +26,7 @@ public class ItemBuilder : EntityBuilder<ItemBuilder, Item>
 
     public override Item GetCopy()
     {
-        Item item = new (this);
+        Item item = new(this);
         return item;
     }
 }

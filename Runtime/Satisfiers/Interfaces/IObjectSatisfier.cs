@@ -1,7 +1,7 @@
-using System;
 using UnityEngine.Events;
 
-public interface IObjectSatisfier<T> : ISatisfier<ObjectSatisfier<T>, T> {
+public interface IObjectSatisfier<T> : ISatisfier<ObjectSatisfier<T>, T>
+{
     public bool CheckSatisfyOnChange(T obj);
     public bool CheckUnsatisfyOnChange(T obj);
     public float Watch(T obj, UnityEvent onSatisfy, UnityEvent onUnsatisfy);

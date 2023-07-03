@@ -87,7 +87,7 @@ public class Draggable : MonoBehaviour, IDraggable, IDragHandler, IPointerDownHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(!AsDraggable.IsDragged)
+        if (!AsDraggable.IsDragged)
             dragBehaviour.OnHover();
     }
 }

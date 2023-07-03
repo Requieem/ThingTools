@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class SatisfierTest

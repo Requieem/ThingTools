@@ -56,7 +56,7 @@ public class Currency : Shire<Currency>
     /// <param name="fixedRate">The fixedRate of this piece of Currency.</param>
     public void Initialize(float fixedRate)
     {
-        this.m_Displayable = new ();
+        this.m_Displayable = new();
         this.fixedRate = fixedRate;
         this.m_MoneyPieces = new List<Money>();
     }
@@ -68,11 +68,11 @@ public class Currency : Shire<Currency>
     /// <param name="fixedRate">The fixedRate of this currency against the unitary rate of 1</param>
     public void Initialize(List<Money> moneyPieces, float fixedRate)
     {
-        this.m_Displayable = new ();
+        this.m_Displayable = new();
         this.m_MoneyPieces.AddRange(moneyPieces);
         this.fixedRate = fixedRate;
     }
-    
+
     #endregion
 
     #region Methods:
@@ -85,7 +85,7 @@ public class Currency : Shire<Currency>
     {
         if (money != null)
         {
-            if(!m_MoneyPieces.Contains(money) && m_MoneyPieces.Where((a) => a.Rate == money.Rate).Count() == 0)
+            if (!m_MoneyPieces.Contains(money) && m_MoneyPieces.Where((a) => a.Rate == money.Rate).Count() == 0)
             {
                 m_MoneyPieces.Add(money);
                 m_MoneyPieces.Sort((a, b) => a.Rate.CompareTo(b.Rate));

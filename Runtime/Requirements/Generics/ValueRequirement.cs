@@ -1,7 +1,7 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class ValueRequirement<D, K, V> : Requirement where D : ThingsContainer<K,V> where K : ScriptableThing<K> {
+public abstract class ValueRequirement<D, K, V> : Requirement where D : ThingsContainer<K, V> where K : ScriptableThing<K>
+{
     #region Instance Fields:
     [SerializeField] protected D m_Dict;
     [SerializeField] protected K m_Key;
@@ -9,7 +9,7 @@ public abstract class ValueRequirement<D, K, V> : Requirement where D : ThingsCo
     #endregion
 
     #region Instance Properties:
-    public ThingsContainer<K,V> Dict { get { return m_Dict; } }
+    public ThingsContainer<K, V> Dict { get { return m_Dict; } }
     public K Key { get { return m_Key; } }
     #endregion
 
@@ -25,12 +25,13 @@ public abstract class ValueRequirement<D, K, V> : Requirement where D : ThingsCo
     #endregion
 
     #region Instance Methods:
-    
+
     public override void Enable()
     {
         base.Enable();
         if (m_Key != null)
-            if (m_Dict?.Watch(m_Key, m_Value, m_DoSatisfy, m_UnSatisfy) >= 0) {
+            if (m_Dict?.Watch(m_Key, m_Value, m_DoSatisfy, m_UnSatisfy) >= 0)
+            {
                 Satisfy();
             }
     }

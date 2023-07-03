@@ -1,6 +1,5 @@
 
 using UnityEngine;
-using System;
 
 public interface IDragContainer : IInitializable
 {
@@ -12,7 +11,7 @@ public interface IDragContainer : IInitializable
     public Transform Transform { get; }
     public ADragContainer DragContainerBehaviour { get; set; }
     public void AdjustEmptySlot();
-    public void ToggleDraggables(bool toggle=true);
+    public void ToggleDraggables(bool toggle = true);
     public void AddDraggable(IDraggable draggable);
     public void RemoveDraggable(IDraggable draggable);
 }

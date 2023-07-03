@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [Serializable]
-public class Equipment : ThingsContainer<SlotType,Item>
+public class Equipment : ThingsContainer<SlotType, Item>
 {
     [SerializeField] protected Statistics m_Statistics;
 
@@ -25,9 +24,9 @@ public class Equipment : ThingsContainer<SlotType,Item>
     {
         Dictionary = null;
 
-        if(item == null) return false;
+        if (item == null) return false;
 
-        if(item.CurrentUsage != null && Dictionary.ContainsKey(item.CurrentUsage) && Dictionary[item.CurrentUsage] == item)
+        if (item.CurrentUsage != null && Dictionary.ContainsKey(item.CurrentUsage) && Dictionary[item.CurrentUsage] == item)
         {
             return Unequip(item);
         }

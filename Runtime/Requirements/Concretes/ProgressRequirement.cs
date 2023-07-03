@@ -8,20 +8,20 @@ public class ProgressRequirement : ReferenceRequirement<Progress, float>
     public override void Enable()
     {
         base.Enable();
-            if (m_Satisfier?.Watch(m_Item, m_DoSatisfy, m_UnSatisfy) >= m_Item)
-            {
-                Satisfy();
-            }
-            else
-            {
-                Unsatisfy();
-            }
+        if (m_Satisfier?.Watch(m_Item, m_DoSatisfy, m_UnSatisfy) >= m_Item)
+        {
+            Satisfy();
+        }
+        else
+        {
+            Unsatisfy();
+        }
     }
 
     public override void Disable()
     {
         base.Disable();
-            m_Satisfier?.Unwatch(m_Item);
+        m_Satisfier?.Unwatch(m_Item);
     }
 
     #endregion

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [Serializable]
-public class DefaultBehaviour<A,O> : IBehaviour<O>, IPassiveBehaviour<A,O> where O : IPassiveBehaviour<O,A>
+public class DefaultBehaviour<A, O> : IBehaviour<O>, IPassiveBehaviour<A, O> where O : IPassiveBehaviour<O, A>
 {
     [SerializeField] Behaviour<A, O> behaviour;
     public Behaviour<A, O> Behaviour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

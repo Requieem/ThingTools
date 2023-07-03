@@ -1,9 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using System.Collections.Generic;
-using Object = UnityEngine.Object;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 [Serializable]
 public class ADragContainer
@@ -61,14 +61,14 @@ public class ADragContainer
         draggables = draggables.Where(d => d != null && d is not null && !d.IsEmpty).ToList();
     }
 
-    public void ToggleDraggables(bool toggle=true)
+    public void ToggleDraggables(bool toggle = true)
     {
         foreach (var draggable in draggables)
         {
             draggable.IsLocked = !toggle;
         }
 
-        if(HasEmpty)
+        if (HasEmpty)
         {
             EmptySlot.IsLocked = !toggle;
         }
@@ -79,7 +79,7 @@ public class ADragContainer
         UpdateDraggables();
         var shouldAdjustSlot = allowsAdding && (IsEmpty || !SlotMode);
 
-        if(shouldAdjustSlot)
+        if (shouldAdjustSlot)
         {
             InstantiateEmptySlot();
         }
@@ -102,25 +102,25 @@ public class ADragContainer
     {
         if (emptyPrefab != null)
         {
-            emptySlot ??= Object.Instantiate(emptyPrefab, transform).GetComponent<IDraggable>(); 
+            emptySlot ??= Object.Instantiate(emptyPrefab, transform).GetComponent<IDraggable>();
         }
         else
         {
             emptySlot ??= new GameObject("EmptySlot", typeof(RectTransform), typeof(Draggable), typeof(BoxCollider2D)).GetComponent<IDraggable>();
         }
-        
+
         emptySlot.Transform.SetParent(transform);
         emptySlot.Transform.SetSiblingIndex(transform.childCount - 1);
         emptySlot.Transform.position = transform.position;
 
         var rectTransform = emptySlot.Transform as RectTransform;
 
-        if(emptySlot.Transform.TryGetComponent<Collider2D>(out var collider))
+        if (emptySlot.Transform.TryGetComponent<Collider2D>(out var collider))
         {
             collider.layerOverridePriority = 9;
         }
 
-        if(emptySlot.Transform.TryGetComponent<Image>(out var image))
+        if (emptySlot.Transform.TryGetComponent<Image>(out var image))
         {
             image.color = new Color(0, 0, 0, 0.01f);
         }
@@ -135,17 +135,17 @@ public class ADragContainer
         UpdateDraggables();
         var wasEmpty = false;
 
-        if(IsEmpty)
+        if (IsEmpty)
         {
             draggables = new();
             wasEmpty = true;
         }
 
-        if(!draggables.Contains(draggable) && !draggable.IsEmpty)
+        if (!draggables.Contains(draggable) && !draggable.IsEmpty)
         {
             draggables.Add(draggable);
 
-            if(wasEmpty)
+            if (wasEmpty)
             {
                 RemoveEmptySlot();
             }
@@ -164,7 +164,7 @@ public class ADragContainer
         draggables ??= new();
         draggables.Remove(draggable);
 
-        if(allowsAdding && (IsEmpty || !SlotMode))
+        if (allowsAdding && (IsEmpty || !SlotMode))
         {
             InstantiateEmptySlot();
         }

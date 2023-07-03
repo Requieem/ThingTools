@@ -24,7 +24,7 @@ public class DragContainer : MonoBehaviour, IDragContainer
     }
 
     public virtual void DoEnable()
-    { 
+    {
         IDraggable.onDragEnd.AddListener(AdjustEmptySlot);
         IDraggable.onDragStart.AddListener(AdjustEmptySlot);
     }
@@ -52,7 +52,7 @@ public class DragContainer : MonoBehaviour, IDragContainer
 
     public void AddDraggable(IDraggable draggable)
     {
-        if(Transform == null)
+        if (Transform == null)
         {
             Initialize(transform);
         }
@@ -75,7 +75,7 @@ public class DragContainer : MonoBehaviour, IDragContainer
         m_DragContainerBehaviour.AdjustEmptySlot();
     }
 
-    public void ToggleDraggables(bool toggle=true)
+    public void ToggleDraggables(bool toggle = true)
     {
         m_DragContainerBehaviour.ToggleDraggables(toggle);
     }

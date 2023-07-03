@@ -1,14 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
-using UnityEngine.Events;
 
 /// <summary>
 /// A base class for all Characters that exist in the game.
 /// </summary>
 [Serializable]
-public class Subject : ThingsContainer<ActionKey,ActionResponseBehaviour>
+public class Subject : ThingsContainer<ActionKey, ActionResponseBehaviour>
 {
     [SerializeField]
     ActionResponseBehaviour defaultResponse;
@@ -18,7 +15,8 @@ public class Subject : ThingsContainer<ActionKey,ActionResponseBehaviour>
 
     #region Instance Methods:
 
-    public virtual ActionResponseBehaviour Response(ActionKey action) {
+    public virtual ActionResponseBehaviour Response(ActionKey action)
+    {
         if (Dictionary.ContainsKey(action))
         {
             return Dictionary[action];

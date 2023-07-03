@@ -1,7 +1,7 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class ReferenceRequirement<D, S> : Requirement where D : IObjectSatisfier<S> {
+public abstract class ReferenceRequirement<D, S> : Requirement where D : IObjectSatisfier<S>
+{
     #region Instance Fields:
     [SerializeReference] protected D m_Satisfier;
     [SerializeField] protected S m_Item;
@@ -22,12 +22,13 @@ public abstract class ReferenceRequirement<D, S> : Requirement where D : IObject
     #endregion
 
     #region Instance Methods:
-    
+
     public override void Enable()
     {
         base.Enable();
         if (m_Item != null)
-            if (m_Satisfier?.Watch(m_Item, m_DoSatisfy, m_UnSatisfy) != 0) {
+            if (m_Satisfier?.Watch(m_Item, m_DoSatisfy, m_UnSatisfy) != 0)
+            {
                 Satisfy();
             }
     }

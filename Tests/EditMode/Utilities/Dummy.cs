@@ -1,7 +1,5 @@
-using NUnit.Framework;
-using System.Runtime.Remoting.Messaging;
-
-public class Dummy {
+public class Dummy
+{
 
     public float value = 0f;
 

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
@@ -139,7 +138,7 @@ public abstract class Satisfier<T> : IComparer<Satisfier<T>.SatisfierBundle>
     /// </summary>
     public virtual SatisfierBundle CreateBundle(T obj, int satisfiedCount, int unsatisfiedCount)
     {
-        return new SatisfierBundle(obj, null, null,  satisfiedCount, unsatisfiedCount);
+        return new SatisfierBundle(obj, null, null, satisfiedCount, unsatisfiedCount);
     }
 
     /// <summary>
@@ -189,7 +188,7 @@ public abstract class Satisfier<T> : IComparer<Satisfier<T>.SatisfierBundle>
             _bundles[obj].Satisfy();
             return true;
         }
-        else 
+        else
         {
             // if one of the keys is equal to the object based on the equality comparer
             var keys = _bundles.Keys;

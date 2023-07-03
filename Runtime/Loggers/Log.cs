@@ -17,14 +17,14 @@ public class Log
         Debug.LogError(message);
     }
 
-    public static void Exc(System.Exception ex, string alt=null)
+    public static void Exc(System.Exception ex, string alt = null)
     {
-        if (alt != null) 
+        if (alt != null)
             Err(alt);
         Debug.LogException(ex);
     }
 
-    public static void Obj(object obj, string alt=null)
+    public static void Obj(object obj, string alt = null)
     {
         if (alt != null)
             Msg(alt);

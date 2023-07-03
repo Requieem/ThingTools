@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
@@ -115,13 +115,13 @@ public class Progress : ObjectContainer<float>
         CurrentProgress = 0;
         requirements = requirements.Where(r => r != null).ToList();
         // go over the requirements list and push satisfied requirements to the satisfied list
-        for(int i = 0; i < requirements.Count; i++)
+        for (int i = 0; i < requirements.Count; i++)
         {
             if (requirements[i] == null)
                 continue;
             if (requirements[i].IsSatisfied)
             {
-                if(linearProgression && i - m_ReachedIndex > 1)
+                if (linearProgression && i - m_ReachedIndex > 1)
                 {
                     break;
                 }
@@ -136,7 +136,7 @@ public class Progress : ObjectContainer<float>
 
         }
 
-        if(IsWatching(CurrentProgress))
+        if (IsWatching(CurrentProgress))
         {
             Satisfier.Satisfy(CurrentProgress);
         }
@@ -176,7 +176,7 @@ public class Progress : ObjectContainer<float>
             return;
 
         m_ReachedIndex = index - 1;
-        if(linearProgression)
+        if (linearProgression)
         {
             /* remove all requirement from the satisfied list from index to count - 1 */
             while (index < satisfied.Count)

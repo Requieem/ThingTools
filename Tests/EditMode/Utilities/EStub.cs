@@ -1,1 +1,1 @@
-public class EStub {}
+public class EStub { }

@@ -18,7 +18,7 @@ public class StatBlockTest
     {
         statBlock_0 = new ShireBlock();
         statBlock_1 = new ShireBlock();
-        
+
         var bundles = new List<Statistics.ThingEntry>() { new Statistics.ThingEntry(firstStat, statBlock_0), new Statistics.ThingEntry(secondStat, statBlock_1) };
 
         statistics_0 = new Statistics(bundles);

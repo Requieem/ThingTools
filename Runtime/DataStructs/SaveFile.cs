@@ -2,13 +2,15 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public struct SaveFile {
+public struct SaveFile
+{
     public string name;
     public DateTime time;
     public double time_played;
     public Character character;
 
-    public SaveFile(Character character, Difficulty difficulty) {
+    public SaveFile(Character character, Difficulty difficulty)
+    {
         time_played = 0f;
         time = DateTime.Now;
         name = character.Name;

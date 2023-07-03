@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 
 public class ObjectPicker
 {
-    public static PropertyField Field(SerializedProperty property, string label="")
+    public static PropertyField Field(SerializedProperty property, string label = "")
     {
         var field = new PropertyField(property, label);
         field.AddToClassList("object-picker");
@@ -29,7 +29,7 @@ public class ObjectPicker
 
     public static void AddTo(VisualElement container, PropertyField field)
     {
-        if(field != null)
+        if (field != null)
         {
             container.Add(field);
         }

@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-public class Vitality : ThingsContainer<HealthType,ShireBlock>
+public class Vitality : ThingsContainer<HealthType, ShireBlock>
 {
     // override Comparer to compare ASt atBundles by their Value
     public override Comparison<ShireBlock> Comparer { get { return (a, b) => a.Value.CompareTo(b.Value); } }

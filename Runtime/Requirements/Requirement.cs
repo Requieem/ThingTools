@@ -41,12 +41,12 @@ public abstract class Requirement : ScriptableObject
     /// <summary>
     /// Gets the Unity event that is invoked when the requirement is met.
     /// </summary>
-    public virtual DataTrigger<Requirement> OnSatisfied { get { onSatisfied ??= new();  return onSatisfied; } }
+    public virtual DataTrigger<Requirement> OnSatisfied { get { onSatisfied ??= new(); return onSatisfied; } }
 
     /// <summary>
     /// Gets the Unity event that is invoked when the requirement is met.
     /// </summary>
-    public virtual DataTrigger<Requirement> OnUnsatisfied { get { onUnsatisfied ??= new();  return onUnsatisfied; } }
+    public virtual DataTrigger<Requirement> OnUnsatisfied { get { onUnsatisfied ??= new(); return onUnsatisfied; } }
 
     #endregion
 

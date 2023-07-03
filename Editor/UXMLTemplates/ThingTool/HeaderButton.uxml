@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/ShireSoft/Editor/Style/thingTool.uss?fileID=7433441132597879392&amp;guid=884385ef9020bfd41b30e07e3c2b0743&amp;type=3#thingTool" />
+    <ui:VisualElement name="ButtonContainer" class="thing-tool-header-button-container button-container overflow-ellipsis header-button-container">
+        <ui:Button text="Button" display-tooltip-when-elided="true" name="Button" class="thing-tool-header-button header-button overflow-ellipsis" />
+    </ui:VisualElement>
+</ui:UXML>

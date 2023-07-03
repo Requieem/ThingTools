@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/ShireSoft/Editor/Style/thingTool.uss?fileID=7433441132597879392&amp;guid=884385ef9020bfd41b30e07e3c2b0743&amp;type=3#thingTool" />
+    <ui:VisualElement name="ListButton" class="list-button overflow-ellipsis" style="-unity-font-style: normal; -unity-text-align: middle-center; white-space: nowrap; text-overflow: ellipsis; padding-top: 2px; padding-bottom: 2px; flex-shrink: 1;">
+        <ui:Button text="Button" display-tooltip-when-elided="true" class="overflow-ellipsis" style="flex-grow: 1; flex-shrink: 1; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-text-align: middle-center; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
+    </ui:VisualElement>
+</ui:UXML>

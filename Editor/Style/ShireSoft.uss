@@ -1,0 +1,337 @@
+.base {
+    background-color: rgb(40, 40, 40);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: 0;
+    margin-right: 10px;
+    margin-top: 15px;
+    margin-bottom: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    transition-duration: 0.25s;
+    transition-delay: 0.1s;
+}
+
+.base:hover {
+    background-color: rgb(40, 40, 40);
+    border-left-color: rgb(83, 97, 126);
+    border-right-color: rgb(83, 97, 126);
+    border-top-color: rgb(83, 97, 126);
+    border-bottom-color: rgb(83, 97, 126);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: 0;
+    margin-right: 10px;
+    margin-top: 15px;
+    margin-bottom: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0.1s;
+}
+
+.hidden {
+    display: none;
+}
+
+.spriteBySideBox {
+    flex-direction: row;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.sideSpriteBox {
+    min-height: 100%;
+    min-width: 100px;
+    background-color: rgb(56, 56, 56);
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-left-color: rgb(88, 88, 88);
+    border-right-color: rgb(88, 88, 88);
+    border-top-color: rgb(88, 88, 88);
+    border-bottom-color: rgb(88, 88, 88);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    max-width: none;
+    max-height: 100%;
+}
+
+.sideSprite {
+    min-height: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.left-padded {
+    margin-left: 0;
+}
+
+.customDropdown {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-right: 11px;
+    margin-left: 0;
+    left: 0;
+    max-width: none;
+    background-color: rgba(88, 88, 88, 0);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(0, 0, 0);
+    margin-bottom: 0;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+}
+
+.customDropdownContainer {
+    margin-top: 0;
+    margin-left: 0;
+    max-width: none;
+    min-width: 160px;
+    margin-right: 0;
+    margin-bottom: 0;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+}
+
+.customListView {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.inner-base {
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: -5px;
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 5px;
+}
+
+.list-content {
+    margin-left: -10px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.list-base {
+    background-color: rgb(47, 47, 47);
+    border-left-color: rgb(88, 88, 88);
+    border-right-color: rgb(88, 88, 88);
+    border-top-color: rgb(88, 88, 88);
+    border-bottom-color: rgb(88, 88, 88);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    -unity-font-style: normal;
+    visibility: visible;
+    display: flex;
+    overflow: visible;
+    flex-grow: 1;
+    transition-duration: 0.25s;
+    transition-delay: 0.1s;
+    transition-timing-function: ease-in-out;
+}
+
+.list-base:hover {
+    background-color: rgb(47, 47, 47);
+    border-left-color: rgb(83, 97, 126);
+    border-right-color: rgb(83, 97, 126);
+    border-top-color: rgb(83, 97, 126);
+    border-bottom-color: rgb(83, 97, 126);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    flex-grow: 1;
+    transition-duration: 0.25s;
+    transition-delay: 0.1s;
+    transition-timing-function: ease-in-out;
+    -unity-font-style: bold;
+}
+
+.customDropdownField {
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: auto;
+    flex-grow: initial;
+    flex-basis: auto;
+    flex-shrink: initial;
+    padding-left: 0;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: flex-end;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.horizontal-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: auto;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-basis: auto;
+    align-items: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.object-picker {
+    justify-content: flex-start;
+    align-self: stretch;
+    margin-left: 0;
+    margin-right: 15px;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.left-margin {
+    padding-left: 25px;
+}
+
+.inner-list {
+    border-left-color: rgb(88, 88, 88);
+    border-right-color: rgb(88, 88, 88);
+    border-top-color: rgb(88, 88, 88);
+    border-bottom-color: rgb(88, 88, 88);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(47, 47, 47);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    align-self: auto;
+}
+
+.header {
+    font-size: 12px;
+    -unity-font-style: bold;
+    margin-bottom: 5px;
+}
+
+.inner-list:hover {
+    border-left-color: rgb(83, 97, 126);
+    border-right-color: rgb(83, 97, 126);
+    border-top-color: rgb(83, 97, 126);
+    border-bottom-color: rgb(83, 97, 126);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(47, 47, 47);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    align-self: auto;
+}

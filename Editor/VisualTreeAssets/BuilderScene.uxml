@@ -1,0 +1,3 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/ShireSoft/Editor/Style/ShireSoft.uss?fileID=7433441132597879392&amp;guid=a27f2113f6b957d4ea84bab9046f2e0b&amp;type=3#ShireSoft" />
+</ui:UXML>

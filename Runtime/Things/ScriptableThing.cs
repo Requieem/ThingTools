@@ -1,71 +1,100 @@
 using UnityEngine;
 
-#if UNITY_EDITOR
-#endif
-
+/// <summary>
+/// An interface that combines IDisplayable and ISerializableThing interfaces.
+/// </summary>
 public interface IScriptableThing : IDisplayable, ISerializableThing { }
 
+/// <summary>
+/// An abstract class that defines scriptable things.
+/// </summary>
+/// <typeparam name="D">The type of the scriptable thing. Must inherit from <see cref="ScriptableThing{D}"/>.</typeparam>
 public abstract class ScriptableThing<D> : ScriptableObject, IScriptableThing, ILister<D> where D : ScriptableThing<D>
 {
-    #region Instance Fields:
+    #region Serialized Fields
 
     [SerializeField] protected Displayable m_Displayable;
-    [SerializeField] protected ThingID m_Identifier = new();
-    [SerializeField] protected Lister<D> m_Lister = new();
+    [SerializeField] protected ThingID m_Identifier = new ThingID();
+    [SerializeField] protected Lister<D> m_Lister = new Lister<D>();
 
     #endregion
 
-    #region Instance Properties:
+    #region Properties
 
-    public Displayable Displayable { get { return m_Displayable; } }
-    public ThingID Identifier { get { return m_Identifier; } set { m_Identifier = value; } }
-    public Lister<D> Lister { get { return m_Lister; } set { m_Lister = value; } }
+    /// <summary>
+    /// The displayable object of the scriptable thing.
+    /// </summary>
+    public Displayable Displayable => m_Displayable;
+
+    /// <summary>
+    /// The identifier of the scriptable thing.
+    /// </summary>
+    public ThingID Identifier { get => m_Identifier; set => m_Identifier = value; }
+
+    /// <summary>
+    /// The lister for managing the scriptable thing.
+    /// </summary>
+    public Lister<D> Lister { get => m_Lister; set => m_Lister = value; }
 
     #endregion
 
-    #region Instance Methods:
+    #region Methods
 
-    public virtual void ListerSerialization()
+    /// <summary>
+    /// Serializes the scriptable thing.
+    /// </summary>
+    public virtual void Serialize()
     {
         Lister.AddListable(this as D);
     }
 
+    /// <summary>
+    /// Called before the scriptable thing is serialized.
+    /// </summary>
     public virtual void OnBeforeSerialize()
     {
-        ListerSerialization();
+        Serialize();
     }
 
+    /// <summary>
+    /// Called after the scriptable thing is deserialized.
+    /// </summary>
     public virtual void OnAfterDeserialize()
     {
-        ListerSerialization();
+        Serialize();
     }
 
     private void OnDestroy()
     {
         Lister.RemoveListable(this as D);
     }
+
     private void OnEnable()
     {
         Enable();
     }
 
+    /// <summary>
+    /// Performs initialization tasks when the scriptable thing is enabled.
+    /// </summary>
     public virtual void Enable()
     {
-        m_Displayable ??= new();
-        m_Lister ??= new();
+        m_Displayable ??= new Displayable();
+        m_Lister ??= new Lister<D>();
         ThingSerializer.Register(this as D);
-        ListerSerialization();
-
-        /*#if UNITY_EDITOR
-                EditorUtility.SetDirty(this);
-        #endif*/
-
+        Serialize();
     }
 
+    /// <summary>
+    /// Initializes the displayable object of the scriptable thing.
+    /// </summary>
+    /// <param name="displayable">The displayable object to set.</param>
     public void Initialize(Displayable displayable)
     {
-        this.m_Displayable = displayable;
+        m_Displayable = displayable;
+        Enable();
     }
 
     #endregion
+
 }

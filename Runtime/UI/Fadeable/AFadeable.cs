@@ -7,19 +7,33 @@ using UnityEngine.UI;
 [Serializable]
 public class AFadeable
 {
-    [SerializeField] bool fade = false;
-    [SerializeField] float targetAlpha = 0f;
-    [SerializeField][Range(0.1f, 5f)] float fadeTime = 0.5f;
+    [SerializeField] private bool fade = false;
+    [SerializeField] private float targetAlpha = 0f;
+    [SerializeField, Range(0.1f, 5f)] private float fadeTime = 0.5f;
 
-    Transform transform;
+    private Transform transform;
+    private List<float> originalAlphas;
+    private bool isFaded = false;
 
-    List<float> originalAlphas;
-    bool isFaded = false;
-
+    /// <summary>
+    /// The RectTransform of the fadeable object.
+    /// </summary>
     public RectTransform RectTransform { get { return transform as RectTransform; } }
+
+    /// <summary>
+    /// The Graphics components of the fadeable object.
+    /// </summary>
     public Graphic[] Graphics { get { return transform.GetComponentsInChildren<Graphic>(); } }
+
+    /// <summary>
+    /// The target object that implements the IFadeable interface.
+    /// </summary>
     public IFadeable Target { get { return transform.GetComponent<IFadeable>(); } }
 
+    /// <summary>
+    /// Initializes the fadeable object with the given Transform.
+    /// </summary>
+    /// <param name="_transform">The Transform to use for initialization.</param>
     public virtual void Initialize(Transform _transform)
     {
         transform = _transform;
@@ -31,6 +45,9 @@ public class AFadeable
         }
     }
 
+    /// <summary>
+    /// Shows the fade effect based on the fade state.
+    /// </summary>
     public void ShowFade()
     {
         if (fade && !isFaded)
@@ -45,6 +62,11 @@ public class AFadeable
         }
     }
 
+    /// <summary>
+    /// Coroutine that fades a graphic component to the target alpha value.
+    /// </summary>
+    /// <param name="graphic">The Graphic component to fade.</param>
+    /// <param name="graphicIndex">The index of the graphic component in the list of Graphics.</param>
     public IEnumerator Fade(Graphic graphic, int graphicIndex)
     {
         float elapsedTime = 0;
@@ -62,9 +84,15 @@ public class AFadeable
         graphic.color = new Color(color.r, color.g, color.b, desiredAlpha);
     }
 
+    /// <summary>
+    /// Coroutine that resets the fade of a graphic component to its original alpha value.
+    /// </summary>
+    /// <param name="graphic">The Graphic component to reset.</param>
+    /// <param name="graphicIndex">The index of the graphic component in the list of Graphics.</param>
     public IEnumerator ResetFade(Graphic graphic, int graphicIndex)
     {
-        if (graphicIndex < 0 || graphicIndex >= originalAlphas.Count) yield break; // invalid index
+        if (graphicIndex < 0 || graphicIndex >= originalAlphas.Count)
+            yield break; // Invalid index
 
         float elapsedTime = 0;
         float startingAlpha = graphic.color.a;

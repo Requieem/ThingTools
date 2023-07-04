@@ -1,20 +1,35 @@
 using System;
+using UnityEngine;
 
 [Serializable]
 public class Step<T> : Shire<T> where T : Step<T>
 {
-    public bool m_IsMinLevel = false;
-    public bool m_IsMaxLevel = false;
-    public float m_ExpToThisLevel;
-    public float m_ExpToNextLevel;
-    public int m_LevelPoints;
+    #region Serialized Fields
+    [SerializeField] private bool m_IsMinLevel = false;
+    [SerializeField] private bool m_IsMaxLevel = false;
+    [SerializeField] private float m_ExpToThisLevel;
+    [SerializeField] private float m_ExpToNextLevel;
+    [SerializeField] private int m_LevelPoints;
 
-    public T m_NextLevel;
-    public T m_PreviousLevel;
+    [SerializeField] private T m_NextLevel;
+    [SerializeField] private T m_PreviousLevel;
 
-    public bool IsMaxLevel { get { return m_IsMaxLevel; } }
-    public bool IsMinLevel { get { return m_IsMinLevel; } }
-    public float RequiredExp { get { return m_ExpToNextLevel - m_ExpToThisLevel; } }
+    #endregion
+
+    #region Properties
+
+    public bool IsMaxLevel => m_IsMaxLevel;
+    public bool IsMinLevel => m_IsMinLevel;
+    public float ExpToThisLevel => m_ExpToThisLevel;
+    public float ExpToNextLevel => m_ExpToNextLevel;
+    public float RequiredExp => ExpToNextLevel - ExpToThisLevel;
+    public int LevelPoints => m_LevelPoints;
+    public T PreviousLevel => m_PreviousLevel;
+    public T NextLevel => m_NextLevel;
+
+    #endregion
+
+    #region Public Methods
 
     public override void Enable()
     {
@@ -33,11 +48,6 @@ public class Step<T> : Shire<T> where T : Step<T>
     public bool Reached(Step<T> level)
     {
         return m_ExpToThisLevel >= level.m_ExpToThisLevel;
-    }
-
-    public override void OnBeforeSerialize()
-    {
-        base.OnBeforeSerialize();
     }
 
     public void FindSiblings()
@@ -72,7 +82,6 @@ public class Step<T> : Shire<T> where T : Step<T>
 
     public float ComputeExpForNext()
     {
-        /*        m_ExpToThisLevel = m_PreviousLevel?.ComputeExpForNext() ?? 0;*/
         return m_ExpToNextLevel + m_ExpToThisLevel;
     }
 
@@ -82,8 +91,20 @@ public class Step<T> : Shire<T> where T : Step<T>
         ComputeExpForNext();
     }
 
+    #endregion
+
+    #region Overrides
+
+    public override void OnBeforeSerialize()
+    {
+        base.OnBeforeSerialize();
+    }
+
     public override void OnAfterDeserialize()
     {
         base.OnAfterDeserialize();
     }
+
+    #endregion
+
 }

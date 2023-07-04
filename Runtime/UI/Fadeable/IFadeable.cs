@@ -1,7 +1,26 @@
-﻿public interface IFadeable : IInitializable
+﻿/// <summary>
+/// Interface for objects that can apply fade effects.
+/// </summary>
+public interface IFadeable : IInitializable
 {
-    public void ShowFade();
-    public void Fade();
-    public void ResetFade();
-    public AFadeable FadeBehaviour { get; set; }
+    /// <summary>
+    /// Previews the fade effect. Generally used in the editor.
+    /// </summary>
+    void PreviewFade();
+
+    /// <summary>
+    /// Initiates the fade effect.
+    /// </summary>
+    void Fade();
+
+    /// <summary>
+    /// Resets the fade effect.
+    /// </summary>
+    void ResetFade();
+
+    /// <summary>
+    /// The fade behavior associated with the IFadeable object.
+    /// </summary>
+    AFadeable FadeBehaviour { get; set; }
+
 }

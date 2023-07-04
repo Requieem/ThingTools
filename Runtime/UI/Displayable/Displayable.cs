@@ -7,46 +7,46 @@ using UnityEngine;
 [Serializable]
 public class Displayable
 {
-    #region Instance Fields:
+    #region Instance Fields
 
-    [SerializeField] Color color = Color.white;
-    [SerializeField] Sprite sprite;
-    [SerializeField][TextAreaAttribute] string description;
+    [SerializeField] private Color color = Color.white;
+    [SerializeField] private Sprite sprite;
+    [SerializeField][TextAreaAttribute] private string description;
 
     #endregion
 
-    #region Instance Properties:
+    #region Instance Properties
 
     /// <summary>
     /// Gets the description of the displayable object.
     /// </summary>
-    public string Description { get { return description; } }
+    public string Description => description;
 
     /// <summary>
     /// Gets the sprite associated with the displayable object.
     /// </summary>
-    public Sprite Sprite { get { return sprite; } }
+    public Sprite Sprite => sprite;
 
     /// <summary>
     /// Gets the color of the displayable object.
     /// </summary>
-    public Color Color { get { return color; } }
+    public Color Color => color;
 
     #endregion
 
-    #region Constructors:
+    #region Constructors
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Displayable"/> class.
+    /// </summary>
     public Displayable() { }
 
     /// <summary>
-    /// Initializes the displayable object with the specified description, sprite, and color.
+    /// Initializes a new instance of the <see cref="Displayable"/> class with the specified description, sprite, and color.
     /// </summary>
     /// <param name="description">The description of the displayable object.</param>
     /// <param name="sprite">The sprite associated with the displayable object.</param>
     /// <param name="color">The color of the displayable object.</param>
-    /// <param name="obj">The T object this displayable is attached to.</param>
-    /// <param name="doDisplay">The event that is invoked when the displayable object is displayed.</param>
-    /// <param name="doHide">The event that is invoked when the displayable object is hidden.</param>
     public Displayable(string description, Sprite sprite, Color color)
     {
         this.description = description;

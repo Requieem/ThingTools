@@ -1,29 +1,62 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Component that provides fading functionality to a GameObject and its child Graphic components.
+/// </summary>
 [ExecuteInEditMode]
 public class Fadeable : MonoBehaviour, IFadeable
 {
-    [SerializeField] AFadeable fadeable = new();
-    [SerializeField] bool fadeChildren = true;
-    [SerializeField] bool fadeOnAwake = true;
+    #region Serialized Fields
 
-    Coroutine[] fade;
-    Coroutine[] reset;
+    [SerializeField]
+    private AFadeable fadeable = new AFadeable();
 
-    public AFadeable FadeBehaviour { get { return fadeable; } set { fadeable = value; } }
-    public int FadeCount { get { return fadeChildren ? fadeable.Graphics.Length : 1; } }
+    [SerializeField]
+    private bool fadeChildren = true;
 
-    public void OnEnable()
+    [SerializeField]
+    private bool fadeOnAwake = true;
+
+    #endregion
+
+    #region Private Fields
+
+    private Coroutine[] fade;
+    private Coroutine[] reset;
+
+    #endregion
+
+    #region Properties
+
+    /// <summary>
+    /// The fade behavior associated with the Fadeable component.
+    /// </summary>
+    public AFadeable FadeBehaviour
+    {
+        get { return fadeable; }
+        set { fadeable = value; }
+    }
+
+    /// <summary>
+    /// The number of Graphic components to apply fade effects to.
+    /// </summary>
+    public int FadeCount => fadeChildren ? fadeable.Graphics.Length : 1;
+
+    #endregion
+
+    #region Unity Callbacks
+
+    private void OnEnable()
     {
         Initialize(transform);
     }
 
-    public void LateUpdate()
+    private void LateUpdate()
     {
-        ShowFade();
+        PreviewFade();
     }
 
-    public void Awake()
+    private void Awake()
     {
         Initialize(transform);
         if (fadeOnAwake && Application.isPlaying)
@@ -32,6 +65,13 @@ public class Fadeable : MonoBehaviour, IFadeable
         }
     }
 
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Initiates the fading effect on the GameObject and its child Graphic components.
+    /// </summary>
     public void Fade()
     {
         StopFade();
@@ -44,6 +84,9 @@ public class Fadeable : MonoBehaviour, IFadeable
         }
     }
 
+    /// <summary>
+    /// Resets the fading effect on the GameObject and its child Graphic components.
+    /// </summary>
     public void ResetFade()
     {
         StopFade();
@@ -56,17 +99,31 @@ public class Fadeable : MonoBehaviour, IFadeable
         }
     }
 
-    public void ShowFade()
+    /// <summary>
+    /// Shows the fading effect on the GameObject and its child Graphic components.
+    /// </summary>
+    public void PreviewFade()
     {
         FadeBehaviour.ShowFade();
     }
 
+    /// <summary>
+    /// Initializes the Fadeable component with the specified transform.
+    /// </summary>
+    /// <param name="_transform">The transform to use for initialization.</param>
     public void Initialize(Transform _transform)
     {
         FadeBehaviour.Initialize(transform);
     }
 
-    void StopFade()
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// Stops all active fading coroutines.
+    /// </summary>
+    private void StopFade()
     {
         if (fade != null)
         {
@@ -92,4 +149,6 @@ public class Fadeable : MonoBehaviour, IFadeable
             reset = null;
         }
     }
+
+    #endregion
 }

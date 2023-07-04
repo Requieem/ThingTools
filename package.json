@@ -11,7 +11,10 @@
             "thing",
             "design",
             "thingtools",
-            "tools"
+            "tools",
+            "enum",
+            "inspector",
+            "editor"
         ],
     "author": {
     "name": "Marco Farace - ShireSoft",

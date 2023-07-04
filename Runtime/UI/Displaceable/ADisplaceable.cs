@@ -7,44 +7,51 @@ using UnityEngine.UI;
 [Serializable]
 public class ADisplaceable
 {
-    [SerializeField] bool displace = false;
-    [SerializeField] Vector3 displacement = Vector3.zero;
-    [SerializeField][Range(0.1f, 5f)] float displaceTime = 0.5f;
-    [SerializeField] Transform displacementContainer;
+    #region Serialized Fields
 
-    protected bool displaced = false;
-    [SerializeField]
-    Vector3 originalPosition;
+    [SerializeField] private bool displace = false;
+    [SerializeField] private Vector3 originalPosition;
+    [SerializeField] private Vector3 displacement = Vector3.zero;
+    [SerializeField] private Transform displacementContainer;
+    [SerializeField, Range(0.1f, 5f)] private float displaceTime = 0.5f;
 
-    GameObject displacedCopy = null;
-    Transform transform = null;
+    #endregion
 
-    public Vector3 DesiredPosition { get { return RectTransform.parent.TransformPoint(originalPosition + displacement); } }
-    public RectTransform RectTransform { get { return transform as RectTransform; } }
-    public RectTransform DisplacedTransform { get { return displacedCopy.transform as RectTransform; } }
-    public bool IsDisplacedCopy { get { return displaced; } }
+    #region Private Fields
 
+    protected bool m_Displaced = false;
+    private GameObject displacedCopy = null;
+    private Transform transform = null;
+
+    #endregion
+
+    #region Properties
+
+    public Vector3 DesiredPosition => RectTransform.parent.TransformPoint(originalPosition + displacement);
+    public RectTransform RectTransform => transform as RectTransform;
+    public RectTransform DisplacedTransform => displacedCopy.transform as RectTransform;
+    public bool IsDisplacedCopy => m_Displaced;
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Initializes the displaceable object with the given Transform.
+    /// </summary>
+    /// <param name="_transform">The Transform to use for initialization.</param>
     public void Initialize(Transform _transform)
     {
         transform = _transform;
         originalPosition = RectTransform.localPosition;
     }
 
-    public void ConditionalDestroy(GameObject gameObject)
-    {
-        if (Application.isPlaying)
-        {
-            GameObject.Destroy(gameObject);
-        }
-        else
-        {
-            GameObject.DestroyImmediate(gameObject);
-        }
-    }
-
+    /// <summary>
+    /// Show the displacement of the object if conditions are met.
+    /// </summary>
     public void ShowDisplacement()
     {
-        if (Application.isPlaying && displaced)
+        if (Application.isPlaying && m_Displaced)
         {
             ConditionalDestroy(transform.gameObject);
             return;
@@ -57,7 +64,7 @@ public class ADisplaceable
             return;
         }
 
-        if (!Application.isPlaying && !displaced && displace && displacedCopy == null)
+        if (!Application.isPlaying && !m_Displaced && displace && displacedCopy == null)
         {
             displacedCopy = GameObject.Instantiate(transform.gameObject, displacementContainer, true);
 
@@ -98,6 +105,9 @@ public class ADisplaceable
         }
     }
 
+    /// <summary>
+    /// Clears the displaced copy object.
+    /// </summary>
     public void ClearDisplaced()
     {
         if (displacedCopy != null)
@@ -108,7 +118,10 @@ public class ADisplaceable
         displacedCopy = null;
     }
 
-    // coroutine that smoothly slides a given rect transform to a given position
+    /// <summary>
+    /// Coroutine that smoothly slides a given RectTransform to a given position.
+    /// </summary>
+    /// <returns>Coroutine IEnumerator</returns>
     public IEnumerator Displace()
     {
         var elapsedTime = 0f;
@@ -126,7 +139,10 @@ public class ADisplaceable
         RectTransform.position = desiredPos;
     }
 
-    // coroutine that smoothly slides a given rect transform to a given position
+    /// <summary>
+    /// Coroutine that smoothly slides a given RectTransform back to its original position.
+    /// </summary>
+    /// <returns>Coroutine IEnumerator</returns>
     public IEnumerator ResetPosition()
     {
         var elapsedTime = 0f;
@@ -141,4 +157,27 @@ public class ADisplaceable
 
         RectTransform.localPosition = originalPosition;
     }
+
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// Destroys the GameObject based on the application's state.
+    /// </summary>
+    /// <param name="gameObject">GameObject to be destroyed.</param>
+    private void ConditionalDestroy(GameObject gameObject)
+    {
+        if (Application.isPlaying)
+        {
+            GameObject.Destroy(gameObject);
+        }
+        else
+        {
+            GameObject.DestroyImmediate(gameObject);
+        }
+    }
+
+    #endregion
+
 }

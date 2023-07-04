@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// An abstract base class for all Numismatics that exist in the game.
+/// An abstract base class for all numismatics in the game.
 /// </summary>
 /// <remarks>
-/// This could be probably implemented as an SDictionary<ANumismatic, AMoney, int>
+/// This could potentially be implemented as an SDictionary&lt;ANumismatic, AMoney, int&gt;.
 /// </remarks>
 [Serializable]
 public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
 {
-    #region Instance Fields:
+    #region Instance Fields
 
     [SerializeField] Currency m_Currency;
     [SerializeField] List<int> quantities = new List<int>();
@@ -21,7 +21,7 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
     [SerializeField] float personalSellRate = 1f;
     [SerializeField] float value = 0f;
 
-    public static float EPSILON = 0.01f;
+    public static float m_EPSILON = 0.01f;
 
     public static Numismatic UNIT
     {
@@ -37,59 +37,76 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
     }
 
     #endregion
-    #region Instance Properties:
+
+    #region Instance Properties
 
     /// <summary>
-    /// The given currency used for this Numismatic.
+    /// The currency used for this numismatic.
     /// </summary>
     public virtual Currency Currency { get { return m_Currency; } }
 
     /// <summary>
-    /// The given quantities of each AMoney in the currency for this Numismatic.
+    /// The quantities of each AMoney in the currency for this numismatic.
     /// </summary>
     public virtual List<int> Quantities { get { return quantities; } }
 
     /// <summary>
-    /// The number of pieces of money in this Numismatic.
+    /// The number of money pieces in this numismatic.
     /// </summary>
     public virtual int MoneyCount { get { return Currency.MoneyCount; } }
 
     /// <summary>
-    /// The money pieces in this Numismatic.
+    /// The money pieces in this numismatic.
     /// </summary>
     public virtual List<Money> MoneyPieces { get { return Currency.MoneyPieces; } }
 
     /// <summary>
-    /// The fixed rate of this Numismatic.
+    /// The fixed rate of this numismatic.
     /// </summary>
     public virtual float FixedRate { get { return Currency.FixedRate; } }
+
+    /// <summary>
+    /// The personal buy rate of this numismatic.
+    /// </summary>
     public virtual float PersonalBuyRate { get { return personalBuyRate; } }
+
+    /// <summary>
+    /// The personal sell rate of this numismatic.
+    /// </summary>
     public virtual float PersonalSellRate { get { return personalSellRate; } }
+
+    /// <summary>
+    /// The price of this numismatic based on its value and the fixed rate.
+    /// </summary>
     public virtual float Price { get { return Value * FixedRate; } }
+
+    /// <summary>
+    /// The remainder of the numismatic.
+    /// </summary>
     public virtual float Remainder { get { return remainder; } }
 
     /// <summary>
-    /// A custom Comparision function for this Numismatic.
+    /// A custom comparison function for this numismatic.
     /// </summary>
     public override Comparison<Numismatic> Comparer { get { return (a, b) => b.Value.CompareTo(a.Value); } }
 
     /// <summary>
-    /// A custom Equality function for this Numismatic.
+    /// A custom equality function for this numismatic.
     /// </summary>
-    public override Func<Numismatic, Numismatic, bool> Equator { get { return (a, b) => a.Value == b.Value || Math.Abs(a.Value - b.Value) < EPSILON; } }
+    public override Func<Numismatic, Numismatic, bool> Equator { get { return (a, b) => a.Value == b.Value || Math.Abs(a.Value - b.Value) < m_EPSILON; } }
 
     #endregion
-    #region Initializers:
+
+    #region Initializers
 
     /// <summary>
-    /// Initializes the Numismatic with the given Currency and Quantities.
+    /// Initializes the numismatic with the given currency and quantities.
     /// </summary>
-    /// <param name="currency">The Currency used for this Numismatic.</param>
-    /// <param name="quantities">The Quantities of each AMoney in the currency for this Numismatic.</param>
+    /// <param name="currency">The currency used for this numismatic.</param>
+    /// <param name="quantities">The quantities of each AMoney in the currency for this numismatic.</param>
     public Numismatic(Currency currency, Tuple<List<int>, float> _quantities = null)
     {
         this.m_Currency = currency;
-
         var quantities = _quantities?.Item1;
         var remainder = _quantities?.Item2;
 
@@ -125,11 +142,13 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
     }
 
     #endregion
-    #region Methods:
+
+    #region Methods
 
     /// <summary>
-    /// returns the total value of this Numismatic.
+    /// Returns the total value of this numismatic.
     /// </summary>
+    /// <returns>The total value of this numismatic.</returns>
     public virtual float Value
     {
         get
@@ -159,10 +178,10 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
     }
 
     /// <summary>
-    /// Convert a given float amount of money into pieces of money from this Numismatic's currency.
+    /// Converts a given amount of money into pieces of money from this numismatic's currency.
     /// </summary>
     /// <param name="amount">The amount of money to convert.</param>
-    /// <returns>A list of pieces of money from this Numismatic's currency.</returns>
+    /// <returns>A tuple containing the list of quantities of each money piece and the remaining amount.</returns>
     public virtual Tuple<List<int>, float> Convert(float amount)
     {
         List<int> _quantities = new(new int[MoneyCount]);
@@ -178,17 +197,17 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
     }
 
     /// <summary>
-    /// Function that given a numismatic with a certain unknown currency, returns wheter or not this numismatic can afford the given numismatic.
+    /// Checks whether this numismatic can afford a given numismatic.
     /// </summary>
-    /// <param name="numismatic">The numismatic to check if this numismatic can afford.</param>
+    /// <param name="numismatic">The numismatic to check.</param>
     /// <returns>True if this numismatic can afford the given numismatic, false otherwise.</returns>
     public virtual bool CanAfford(Numismatic numismatic)
     {
-        return Value >= numismatic.Value || Math.Abs(Value - numismatic.Value) <= EPSILON;
+        return Value >= numismatic.Value || Math.Abs(Value - numismatic.Value) <= m_EPSILON;
     }
 
     /// <summary>
-    /// Gain a specified amount of money in this Numismatic's currency.
+    /// Increases the quantity of money in this numismatic's currency by the specified amount.
     /// </summary>
     /// <param name="amount">The amount of money to gain.</param>
     public virtual void Gain(float amount)
@@ -205,7 +224,7 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
     }
 
     /// <summary>
-    /// Spend a specified amount of money in this Numismatic's currency.
+    /// Decreases the quantity of money in this numismatic's currency by the specified amount.
     /// </summary>
     /// <param name="amount">The amount of money to spend.</param>
     public virtual void Spend(float amount)
@@ -222,30 +241,40 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
     }
 
     /// <summary>
-    /// given a float rate, converts the value * rate into pieces of money from this Numismatic's currency.
+    /// Converts the value of this numismatic multiplied by the specified rate into pieces of money from this numismatic's currency.
     /// </summary>
     /// <param name="rate">The rate to convert the value by.</param>
-    /// <returns>A list of pieces of money from this Numismatic's currency.</returns>
+    /// <returns>A tuple containing the list of quantities of each money piece and the remaining amount.</returns>
     public virtual Tuple<List<int>, float> ConvertRate(float rate)
     {
         return Convert(Value * rate);
     }
 
-    public virtual Numismatic SellValue(float value)
+    /// <summary>
+    /// Creates a new numismatic with the same currency as this numismatic, but with a value equal to the specified value multiplied by the personal sell rate.
+    /// </summary>
+    /// <param name="value">The value to convert.</param>
+    /// <returns>A new numismatic with the same currency as this numismatic, but with a value equal to the specified value multiplied by the personal sell rate.</returns>
+    public virtual Numismatic SoldPrice(float value)
     {
         return new Numismatic(m_Currency, ConvertRate(value * personalSellRate));
     }
 
-    public virtual Numismatic BuyValue(float value)
+    /// <summary>
+    /// Creates a new numismatic with the same currency as this numismatic, but with a value equal to the specified value multiplied by the personal buy rate.
+    /// </summary>
+    /// <param name="value">The value to convert.</param>
+    /// <returns>A new numismatic with the same currency as this numismatic, but with a value equal to the specified value multiplied by the personal buy rate.</returns>
+    public virtual Numismatic BoughtPrice(float value)
     {
         return new Numismatic(m_Currency, ConvertRate(value * personalBuyRate));
     }
 
     /// <summary>
-    /// Given an external rate, return a new Numismatic with the same currency as this Numismatic, but with the value * rate.
+    /// Creates a new numismatic with the same currency as this numismatic, but with the value multiplied by the specified rate.
     /// </summary>
     /// <param name="rate">The rate to convert the value by.</param>
-    /// <returns>A new Numismatic with the same currency as this Numismatic, but with the value * rate.</returns>
+    /// <returns>A new numismatic with the same currency as this numismatic, but with the value multiplied by the specified rate.</returns>
     public virtual Numismatic ApplyRate(float rate)
     {
         return new Numismatic(m_Currency, ConvertRate(rate));
@@ -333,5 +362,6 @@ public class Numismatic : OSatisfier<Numismatic>, ISerializationCallbackReceiver
     }
 
     #endregion
+
 }
 

@@ -52,7 +52,7 @@ public class InventoryTest
 
         Assert.IsTrue(res);
         CollectionAssert.DoesNotContain(firstInventory.Elements, firstObject);
-        Assert.IsTrue(firstNumismatic.Value == x_money || Math.Abs(firstNumismatic.Value - x_money) <= Numismatic.EPSILON);
+        Assert.IsTrue(firstNumismatic.Value == x_money || Math.Abs(firstNumismatic.Value - x_money) <= Numismatic.m_EPSILON);
     }
 
     [Test, Order(3)]

@@ -63,7 +63,7 @@ public class NumismaticTest
         Debug.Log("Numismatic Value: " + firstNumismatic.Value);
         Debug.Log("Original Value: " + originalValue);
 
-        Assert.IsTrue(Math.Abs(firstNumismatic.Value - originalValue) <= Numismatic.EPSILON);
+        Assert.IsTrue(Math.Abs(firstNumismatic.Value - originalValue) <= Numismatic.m_EPSILON);
     }
 
     [Test, Order(2)]
@@ -76,7 +76,7 @@ public class NumismaticTest
         // right now, both numismatics have equal value. let's assert that.
         /*        Assert.IsTrue(firstNumismatic.Value == secondNumismatic.Value);*/
         // Precision is not guaranteed, so we use an epsilon... this will do for now
-        Assert.IsTrue(Math.Abs(firstNumismatic.Value - secondNumismatic.Value) <= Numismatic.EPSILON);
+        Assert.IsTrue(Math.Abs(firstNumismatic.Value - secondNumismatic.Value) <= Numismatic.m_EPSILON);
 
         // given the above, both should be able to afford the other.
         Assert.IsTrue(secondNumismatic.CanAfford(firstNumismatic));
@@ -229,7 +229,7 @@ public class NumismaticTest
 
         firstNumismatic.Gain(firstNumismatic.Value);
 
-        Assert.IsTrue(Math.Abs(firstNumismatic.Value - x_value) <= Numismatic.EPSILON);
+        Assert.IsTrue(Math.Abs(firstNumismatic.Value - x_value) <= Numismatic.m_EPSILON);
     }
 
     [Test, Order(11)]
@@ -239,7 +239,7 @@ public class NumismaticTest
 
         firstNumismatic.Gain(-firstNumismatic.Value);
 
-        Assert.IsTrue(Math.Abs(firstNumismatic.Value - x_value) <= Numismatic.EPSILON);
+        Assert.IsTrue(Math.Abs(firstNumismatic.Value - x_value) <= Numismatic.m_EPSILON);
     }
 
     [Test, Order(12)]
@@ -259,7 +259,7 @@ public class NumismaticTest
 
         firstNumismatic.Spend(firstNumismatic.Value);
 
-        Assert.IsTrue(Math.Abs(firstNumismatic.Value - x_value) <= Numismatic.EPSILON);
+        Assert.IsTrue(Math.Abs(firstNumismatic.Value - x_value) <= Numismatic.m_EPSILON);
     }
 
     [Test, Order(14)]
@@ -269,7 +269,7 @@ public class NumismaticTest
 
         firstNumismatic.Gain(-firstNumismatic.Value);
 
-        Assert.IsTrue(Math.Abs(firstNumismatic.Value - x_value) <= Numismatic.EPSILON);
+        Assert.IsTrue(Math.Abs(firstNumismatic.Value - x_value) <= Numismatic.m_EPSILON);
     }
 
 }

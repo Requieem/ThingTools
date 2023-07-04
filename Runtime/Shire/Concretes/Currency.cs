@@ -8,107 +8,118 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Currency", menuName = "ShireSoft/Numismatic/Currency", order = 0)]
 public class Currency : Shire<Currency>
 {
-    #region Instance Fields:
+    #region Instance Fields
+    [SerializeField]
+    private List<Money> moneyPieces = new List<Money>();
+    [SerializeField]
+    private float fixedRate;
 
-    [SerializeField]
-    List<Money> m_MoneyPieces = new();
-    [SerializeField]
-    float fixedRate;
+    #endregion
 
     public static Currency UNIT
     {
         get
         {
-            var unit = ScriptableObject.CreateInstance<Currency>();
-            var piece = ScriptableObject.CreateInstance<Money>();
+            var unit = CreateInstance<Currency>();
+            var piece = CreateInstance<Money>();
             piece.Initialize(1);
             unit.Initialize(new List<Money>() { piece }, 1);
             return unit;
         }
     }
 
-    #endregion
-    #region Instance Properties:
+    #region Instance Properties
 
     /// <summary>
-    /// The given fixedRate for this piece of Currency.
-    /// This is relative to the unit value of 1 which is the base value of all currencies.
+    /// The fixed rate for this piece of Currency.
+    /// This is relative to the unit value of 1, which is the base value of all currencies.
     /// </summary>
-    public virtual float FixedRate { get { return fixedRate; } }
+    public float FixedRate => fixedRate;
 
     /// <summary>
     /// The list of Money pieces that are part of this Currency.
     /// </summary>
-    public virtual List<Money> MoneyPieces { get { return m_MoneyPieces; } }
+    public List<Money> MoneyPieces => moneyPieces;
 
     /// <summary>
     /// The count of Money pieces that are part of this Currency.
     /// </summary>
-    public virtual int MoneyCount { get { return MoneyPieces.Count; } }
+    public int MoneyCount => moneyPieces.Count;
 
     #endregion
 
-    #region Initializers:
+    #region Initializers
 
     /// <summary>
-    /// Initializes the Currency with the given description, sprite, color, known Currencys, and relations.
+    /// Initializes the Currency with the given fixed rate.
     /// </summary>
-    /// <param name="fixedRate">The fixedRate of this piece of Currency.</param>
+    /// <param name="fixedRate">The fixed rate of this piece of Currency.</param>
     public void Initialize(float fixedRate)
     {
-        this.m_Displayable = new();
+        m_Displayable = new Displayable();
         this.fixedRate = fixedRate;
-        this.m_MoneyPieces = new List<Money>();
+        moneyPieces = new List<Money>();
     }
 
     /// <summary>
-    /// Initialized the Currency with the given fixedRate and moneyPieces list
+    /// Initializes the Currency with the given fixed rate and money pieces list.
     /// </summary>
-    /// <param name="moneyPieces">The list of money pieces that make up this currency</param>
-    /// <param name="fixedRate">The fixedRate of this currency against the unitary rate of 1</param>
+    /// <param name="moneyPieces">The list of money pieces that make up this Currency.</param>
+    /// <param name="fixedRate">The fixed rate of this Currency against the unitary rate of 1.</param>
     public void Initialize(List<Money> moneyPieces, float fixedRate)
     {
-        this.m_Displayable = new();
-        this.m_MoneyPieces.AddRange(moneyPieces);
+        m_Displayable = new Displayable();
+        this.moneyPieces.AddRange(moneyPieces);
         this.fixedRate = fixedRate;
     }
 
     #endregion
 
-    #region Methods:
+    #region Methods
 
     /// <summary>
     /// Adds the given piece of Money to this Currency.
     /// </summary>
     /// <param name="money">The piece of Money to add to this Currency.</param>
-    public virtual bool AddMoney(Money money)
+    /// <returns>Returns true if the Money was successfully added, false otherwise.</returns>
+    public bool AddMoney(Money money)
     {
         if (money != null)
         {
-            if (!m_MoneyPieces.Contains(money) && m_MoneyPieces.Where((a) => a.Rate == money.Rate).Count() == 0)
+            if (!moneyPieces.Contains(money) && moneyPieces.Where(a => a.Rate == money.Rate).Count() == 0)
             {
-                m_MoneyPieces.Add(money);
-                m_MoneyPieces.Sort((a, b) => a.Rate.CompareTo(b.Rate));
+                moneyPieces.Add(money);
+                moneyPieces.Sort((a, b) => a.Rate.CompareTo(b.Rate));
                 return true;
             }
-            else { return false; }
+            else
+            {
+                return false;
+            }
         }
-        else { return false; }
+        else
+        {
+            return false;
+        }
     }
 
     /// <summary>
     /// Removes the given piece of Money from this Currency.
     /// </summary>
     /// <param name="money">The piece of Money to remove from this Currency.</param>
-    public virtual bool RemoveMoney(Money money)
+    /// <returns>Returns true if the Money was successfully removed, false otherwise.</returns>
+    public bool RemoveMoney(Money money)
     {
         if (money != null)
         {
-            return m_MoneyPieces.Remove(money);
+            return moneyPieces.Remove(money);
         }
-        else { return false; }
+        else
+        {
+            return false;
+        }
     }
 
     #endregion
-}
 
+}

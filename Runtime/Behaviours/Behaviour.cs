@@ -9,38 +9,38 @@ public class Behaviour<A, O> : ScriptableObject // A = Activator, O = Other
     #region Instance Fields:
 
     [SerializeField]
-    EventTrigger onActivation;
+    protected EventTrigger m_OnActivation;
     [SerializeField]
-    Requirement requirement;
+    protected Requirement m_Requirement;
     [NonSerialized]
-    protected A behaver;
+    protected A m_Behaver;
 
     [SerializeField]
-    protected readonly InteractionKey key;
+    protected readonly InteractionKey m_Key;
 
     #endregion
 
     #region Instance Properties:
 
     /// <summary>
-    /// The AEvent to be invoked when this behaviour is activated.
+    /// The EventTrigger to be invoked when this behaviour is activated.
     /// </summary>
-    public EventTrigger OnActivation { get { return onActivation; } }
+    public EventTrigger OnActivation { get { return m_OnActivation; } }
 
     /// <summary>
     /// The requirement that must be met before this behaviour can be activated.
     /// </summary>
-    public Requirement Requirement { get { return requirement; } }
+    public Requirement Requirement { get { return m_Requirement; } }
 
     /// <summary>
     /// The scriptable object that this behaviour is attached to.
     /// </summary>
-    public A Behaver { get { return behaver; } }
+    public A Behaver { get { return m_Behaver; } }
 
     /// <summary>
     /// The key of this behaviour.
     /// </summary>
-    public InteractionKey Key { get { return key; } }
+    public InteractionKey Key { get { return m_Key; } }
 
     #endregion
 
@@ -54,9 +54,9 @@ public class Behaviour<A, O> : ScriptableObject // A = Activator, O = Other
     /// <param name="activator">The scriptable object that this behaviour is attached to, responsible for activating it.</param>
     public void Initialize(EventTrigger onActivation, Requirement requirement, A behaver)
     {
-        this.onActivation = onActivation;
-        this.requirement = requirement;
-        this.behaver = behaver;
+        this.m_OnActivation = onActivation;
+        this.m_Requirement = requirement;
+        this.m_Behaver = behaver;
     }
 
     #endregion
@@ -68,7 +68,7 @@ public class Behaviour<A, O> : ScriptableObject // A = Activator, O = Other
     /// </summary>
     public bool CanActivate()
     {
-        if (requirement == null || requirement.IsSatisfied)
+        if (m_Requirement == null || m_Requirement.IsSatisfied)
         {
             return true;
         }
@@ -80,9 +80,9 @@ public class Behaviour<A, O> : ScriptableObject // A = Activator, O = Other
     /// </summary>
     public void InvokeActivation()
     {
-        if (onActivation != null)
+        if (m_OnActivation != null)
         {
-            onActivation.Invoke();
+            m_OnActivation.Invoke();
         }
     }
 

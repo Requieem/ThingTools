@@ -177,7 +177,7 @@ public abstract class OSatisfier<T> : IObjectSatisfier<T>
     {
         if (EnsureSatisfier() || !IsWatching(obj))
         {
-            Satisfier.AddBundle(Satisfier.CreateBundle(obj, 1, 0));
+            Satisfier.AddBundle(Satisfier.CreateNullEventBundle(obj, 1, 0));
             return false;
         }
         else if (IsWatching(obj))

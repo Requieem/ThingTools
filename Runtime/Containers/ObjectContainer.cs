@@ -10,30 +10,42 @@ public abstract class ObjectContainer<S> : OSatisfier<S>
     #region Instance Fields:
 
     [SerializeField]
-    protected List<S> m_Elements = new();
+    protected List<S> m_Elements = new List<S>();
 
     #endregion
 
+    /// <summary>
+    /// Initializes the container with the specified list of objects.
+    /// </summary>
+    /// <param name="objects">The list of objects to initialize the container with.</param>
     public virtual void Initialize(List<S> objects)
     {
-        this.m_Elements = objects;
+        m_Elements = objects;
         EnableSatisfier();
     }
 
     #region Instance Properties:
 
     /// <summary>
-    /// The objects in this Container.
+    /// Gets the objects in this Container.
     /// </summary>
-    public virtual List<S> Elements { get { return m_Elements; } }
+    public virtual List<S> Elements
+    {
+        get { return m_Elements; }
+    }
+
     #endregion
 
     #region Methods:
 
+    /// <summary>
+    /// Enables the container's satisfier and starts watching all the objects in the container.
+    /// </summary>
     public override void EnableSatisfier()
     {
         base.EnableSatisfier();
-        // watch all the objects in the inventory
+
+        // Watch all the objects in the container
         foreach (S obj in Elements)
         {
             CheckSatisfyOnChange(obj);
@@ -43,7 +55,7 @@ public abstract class ObjectContainer<S> : OSatisfier<S>
     /// <summary>
     /// Adds the given object to this Container.
     /// </summary>
-
+    /// <param name="obj">The object to add.</param>
     public virtual void Add(S obj)
     {
         if (obj == null)
@@ -58,6 +70,8 @@ public abstract class ObjectContainer<S> : OSatisfier<S>
     /// <summary>
     /// Removes the given object from this Container.
     /// </summary>
+    /// <param name="obj">The object to remove.</param>
+    /// <returns>True if the object was successfully removed, false otherwise.</returns>
     public virtual bool Remove(S obj)
     {
         if (obj == null)
@@ -79,4 +93,3 @@ public abstract class ObjectContainer<S> : OSatisfier<S>
 
     #endregion
 }
-

@@ -9,7 +9,7 @@ public class ShireEditor : Editor
     protected StyleSheet m_StyleSheet;
     public override VisualElement CreateInspectorGUI()
     {
-        m_StyleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/ShireSoft/Editor/Style/ShireSoft.uss");
+        m_StyleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("./Style/ShireSoft.uss");
 
         var container = new VisualElement();
         container.styleSheets.Add(m_StyleSheet);

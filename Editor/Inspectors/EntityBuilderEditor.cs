@@ -17,7 +17,7 @@ public abstract class EntityBuilderEditor : Editor
         var displayableField = new PropertyField(displayableProp);
         displayableField.BindProperty(displayableProp);
 
-        m_StyleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(PathConstants.StylePath);
+        styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(PathConstants.StylePath);
 
         var baseContainer = new VisualElement();
         baseContainer.styleSheets.Add(styleSheet);

@@ -17,7 +17,7 @@ public abstract class EntityBuilderEditor : Editor
         var displayableField = new PropertyField(displayableProp);
         displayableField.BindProperty(displayableProp);
 
-        styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("./Style/ShireSoft.uss");
+        m_StyleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(PathConstants.StylePath);
 
         var baseContainer = new VisualElement();
         baseContainer.styleSheets.Add(styleSheet);

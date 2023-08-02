@@ -8,7 +8,7 @@ public class MoneyEditor : ShireEditor
 {
     public override VisualElement CreateInspectorGUI()
     {
-        m_StyleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("./Style/ShireSoft.uss");
+        m_StyleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(PathConstants.StylePath);
 
         var container = new VisualElement();
         container.styleSheets.Add(m_StyleSheet);

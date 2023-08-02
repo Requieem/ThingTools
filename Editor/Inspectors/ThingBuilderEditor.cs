@@ -8,7 +8,7 @@ public class ThingBuilderEditor : Editor
     StyleSheet styleSheet;
     public override VisualElement CreateInspectorGUI()
     {
-        styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("./Style/ShireSoft.uss");
+        m_StyleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(PathConstants.StylePath);
 
         var container = new VisualElement();
         container.styleSheets.Add(styleSheet);

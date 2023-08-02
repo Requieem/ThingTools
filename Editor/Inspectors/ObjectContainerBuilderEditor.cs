@@ -10,7 +10,7 @@ public class ObjectContainerBuilderEditor : Editor
     StyleSheet styleSheet;
     public override VisualElement CreateInspectorGUI()
     {
-        styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("./Style/ShireSoft.uss");
+        m_StyleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(PathConstants.StylePath);
 
         // Create property container element.
         var container = new Foldout();

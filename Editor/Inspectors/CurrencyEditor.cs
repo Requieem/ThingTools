@@ -11,7 +11,7 @@ public class CurrencyEditor : ShireEditor
     private readonly static string viewDataKey = "CurrencyFoldout_" + Guid.NewGuid().ToString();
     public override VisualElement CreateInspectorGUI()
     {
-        m_StyleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("./Style/ShireSoft.uss");
+        m_StyleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(PathConstants.StylePath);
 
         var container = new VisualElement();
         container.styleSheets.Add(m_StyleSheet);

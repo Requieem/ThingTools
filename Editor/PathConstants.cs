@@ -1,4 +1,4 @@
-public static class PathConstants
+public class PathConstants
 {
-    const string StylePath = "Packages/com.shiresoft.thingtools/Editor/Style/ShireSoft.uss";
+    static const string StylePath = "Packages/com.shiresoft.thingtools/Editor/Style/ShireSoft.uss";
 }

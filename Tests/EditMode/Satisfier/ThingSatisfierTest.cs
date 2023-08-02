@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using UnityEngine.Events;
 
-public class ContextSatisfierTest : SatisfierTest
+public class ThingSatisfierTest : SatisfierTest
 {
     ThingSatisfier<Dummy, Dummy> satisfier;
 
@@ -23,7 +23,7 @@ public class ContextSatisfierTest : SatisfierTest
     }
 
     [Test, Order(5)]
-    public void Watch_DosntAddNullValues()
+    public void Watch_ThrowsOnNullValue()
     {
         var x_count = 0;
         var ret = satisfier.Watch(new Dummy(), null, null, null);
@@ -50,11 +50,6 @@ public class ContextSatisfierTest : SatisfierTest
         AssertBundle(m_Obj, 0, 0, null, null, bundle[m_Obj]);
     }
 
-    /// <remark>
-    /// I should probably check for the whole Bundles collection to not be modified
-    /// except for what is expected. TODO for later.
-    /// This goes for <see cref="ObjectSatisfierTest.Watch_ReplacesEvents"/> too.
-    /// </remark>
     [Test, Order(7)]
     public void Watch_ReplacesEvents()
     {

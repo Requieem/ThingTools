@@ -49,13 +49,15 @@ public class ThingSatisfier<K, V> : Satisfier<V>
     /// <param name="doSatisfy">Event to be triggered when the object is satisfied.</param>
     /// <param name="unSatisfy">Event to be triggered when the object is unsatisfied.</param>
     /// <returns>The number of items currently being watched by the Satisfier, after the new item has been added.</returns>
-    /// <exception cref="System.ArgumentNullException">Thrown when either _key or _value is null.</exception>
+    /// <exception cref="ArgumentNullException">Thrown when either _key or _value is null.</exception>
     /// <remarks>If the key is not being watched, a new dictionary of SatisfierBundles will be added to the main dictionary under this key.</remarks>
     public virtual int Watch(K _key, V _value, UnityEvent doSatisfy, UnityEvent unSatisfy)
     {
-        if (_key == null || _value == null)
+        // check for null objects
+        if (_key is null || _value is null)
         {
-            throw new ArgumentNullException("Cannot watch a null object nor a null key, check " + typeof(V) + " requirements for null object references.");
+            Log.Wng($"Cannot watch a null object or a null key, check {typeof(K)} and {typeof(V)} parameters for null object references.");
+            return 0;
         }
 
         if (!IsWatching(_key))

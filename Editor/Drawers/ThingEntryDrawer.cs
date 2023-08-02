@@ -27,7 +27,8 @@ public class ThingEntryDrawer : PropertyDrawer
         var keyField = new PropertyField(keyProp);
         keyField.RegisterValueChangeCallback((evt) =>
         {
-            var enumNames = keyProp.enumNames;
+            var isEnum = keyProp.propertyType is SerializedPropertyType.Enum;
+            var enumNames = isEnum ? keyProp.enumNames : null;
             var enumValue = enumNames is not null && enumNames.Length > 0 ? enumNames[keyProp.enumValueIndex] : null;
             container.text = enumValue is not null ? enumValue : keyProp?.objectReferenceValue?.name ?? "NULL";
             keyField.MarkDirtyRepaint();

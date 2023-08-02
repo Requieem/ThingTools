@@ -9,9 +9,9 @@ using UnityEngine;
 /// <remarks>
 /// This class also provides functionality to add, remove, order, and toggle elements within the list.
 /// </remarks>
-/// <typeparam name="D">The type of the elements in the lister. Must inherit from <see cref="ScriptableObject"/> and implement the <see cref="ILister{D}"/> interface.</typeparam>
+/// <typeparam name="D">The type of the elements in the lister.</typeparam>
 [Serializable]
-public class Lister<D> where D : ScriptableObject, ILister<D>
+public class Lister<D>
 {
     #region Instance Fields
 
@@ -54,9 +54,7 @@ public class Lister<D> where D : ScriptableObject, ILister<D>
     /// </summary>
     public void Sync()
     {
-        OrderListables();
-        m_Siblings.Clear();
-        m_Siblings.AddRange(m_Elements);
+        m_Siblings = OrderedElements();
     }
 
     /// <summary>
@@ -83,17 +81,6 @@ public class Lister<D> where D : ScriptableObject, ILister<D>
         m_Elements.Remove(item);
         Sync();
         OnRemove?.Invoke();
-    }
-
-    /// <summary>
-    /// Orders the elements in the lister according to the current order criteria.
-    /// </summary>
-    public virtual void OrderListables()
-    {
-        m_Elements = m_Elements
-                        .Where(x => x != null && x is not null)
-                        .OrderBy(m_OrderCriteria)
-                        .ToList();
     }
 
     /// <summary>

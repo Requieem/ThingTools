@@ -99,8 +99,19 @@ public class ScriptableObjectCreationWindow : EditorWindow
     // Current template asset 
     ScriptableObject m_TemplateAsset;
 
-    public Assembly Assembly { get => this.GetType().Assembly; }
-    public List<Type> Types { get => Assembly.GetTypes().Where(t => !t.IsAbstract && !t.IsGenericType && t.IsSubclassOf(typeof(ScriptableObject))).ToList(); }
+    public Assembly[] Assemblies { get => System.AppDomain.CurrentDomain.GetAssemblies(); }
+    public List<Type> Types 
+    { 
+        get
+        {
+            List<Type> types = new();
+            foreach(var assembly in Assemblies)
+            {
+                types.AddRange(assembly.GetTypes().Where(t => !t.IsAbstract && !t.IsGenericType && t.IsSubclassOf(typeof(ScriptableObject))).ToList());
+            }
+            return types;
+        }
+    } 
     public List<Type> HeaderTypes { get => m_Depth.Where(x => x.Value == 0).Select(x => x.Key).ToList(); }
     public List<Type> SubTypes { get => m_Hierarchy.ContainsKey(m_SelectedHeader) ? m_Hierarchy[m_SelectedHeader] : new List<Type>(); }
     public List<Type> ContentTypes

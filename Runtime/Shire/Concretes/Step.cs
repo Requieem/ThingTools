@@ -15,7 +15,7 @@ public class Step<T> : Shire<T> where T : Step<T>
     [SerializeField] private T m_PreviousLevel;
 
     #endregion
-
+    
     #region Properties
 
     public bool IsMaxLevel => m_IsMaxLevel;

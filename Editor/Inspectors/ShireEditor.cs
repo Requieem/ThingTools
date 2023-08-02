@@ -33,7 +33,7 @@ public class ShireEditor : Editor
     {
         var usedProp = serializedObject.FindProperty("m_Used");
         var orderProp = serializedObject.FindProperty("m_Order");
-        var itemsProp = serializedObject.FindProperty("m_Lister").FindPropertyRelative("siblings");
+        var itemsProp = serializedObject.FindProperty("m_Lister").FindPropertyRelative("m_Siblings");
 
         var usageContainer = new VisualElement();
 

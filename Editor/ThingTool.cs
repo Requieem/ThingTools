@@ -107,6 +107,7 @@ public class ScriptableObjectCreationWindow : EditorWindow
             List<Type> types = new();
             foreach(var assembly in Assemblies)
             {
+                if(assembly.IsDynamic) continue;
                 types.AddRange(assembly.GetTypes().Where(t => !t.IsAbstract && !t.IsGenericType && t.IsSubclassOf(typeof(ScriptableObject))).ToList());
             }
             return types;

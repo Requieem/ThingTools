@@ -99,7 +99,7 @@ public class ScriptableObjectCreationWindow : EditorWindow
     // Current template asset 
     ScriptableObject m_TemplateAsset;
 
-    public Assembly[] Assemblies { get => System.AppDomain.CurrentDomain.GetAssemblies(); }
+    public Assembly[] Assemblies { get => AssemblyUtility.GetUserDefinedAssemblies(); }
     public List<Type> Types 
     { 
         get
